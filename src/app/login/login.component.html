@@ -1,0 +1,47 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-md-8">
+    </div>
+
+    <div class="col-md-4">
+      <mdb-card>
+        <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+          <mdb-card-img src="assets/img/leaf.jpg"
+                        alt="Card image cap"></mdb-card-img>
+          <a>
+            <div class="mask"></div>
+          </a>
+        </div>
+        <mdb-card-body>
+          <mdb-card-title>
+            <h4 class="text-center text-uppercase green-text">Vivero</h4>
+          </mdb-card-title>
+          <mdb-card-text>
+            <form (ngSubmit)="home()" [formGroup]="validateForm">
+              <div class="md-form">
+                <i class="fas fa-user prefix"></i>
+                <input mdbInput mdbValidate formControlName="emailFormEx" minLength="8" maxLength="10" type="number"
+                       class="form-control" id="form1">
+                <label for="form1">Documento</label>
+                <mdb-error *ngIf="emailFormEx.invalid && (emailFormEx.dirty || emailFormEx.touched)">Campo inválido</mdb-error>
+                <mdb-success *ngIf="emailFormEx.valid && (emailFormEx.dirty || emailFormEx.touched)">Campo válido</mdb-success>
+              </div>
+
+              <div class="md-form">
+                <i class="fa fa-lock prefix"></i>
+                <input mdbInput mdbValidate formControlName="passwordFormEx" minLength="10" maxLength="16" type="password"
+                       class="form-control" id="form2">
+                <label for="form2">Contraseña</label>
+                <mdb-error *ngIf="passwordFormEx.invalid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo inválido
+                </mdb-error>
+                <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo válido
+                </mdb-success>
+                <button mdbBtn type="submit" color="light-green" block="true" rounded="true" mdbWavesEffect>Ingresar</button>
+              </div>
+            </form>
+          </mdb-card-text>
+        </mdb-card-body>
+      </mdb-card>
+    </div>
+  </div>
+</div>
