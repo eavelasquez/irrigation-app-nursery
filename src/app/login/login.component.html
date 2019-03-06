@@ -20,11 +20,11 @@
             <form (ngSubmit)="home()" [formGroup]="validateForm">
               <div class="md-form">
                 <i class="fas fa-user prefix"></i>
-                <input mdbInput mdbValidate formControlName="emailFormEx" minLength="8" maxLength="10" type="number"
+                <input mdbInput mdbValidate formControlName="documentFormEx" minLength="8" maxLength="10" type="text"
                        class="form-control" id="form1">
                 <label for="form1">Documento</label>
-                <mdb-error *ngIf="emailFormEx.invalid && (emailFormEx.dirty || emailFormEx.touched)">Campo inválido</mdb-error>
-                <mdb-success *ngIf="emailFormEx.valid && (emailFormEx.dirty || emailFormEx.touched)">Campo válido</mdb-success>
+                <mdb-error *ngIf="documentFormEx.invalid && (documentFormEx.dirty || documentFormEx.touched)">Campo inválido</mdb-error>
+                <mdb-success *ngIf="documentFormEx.valid && (documentFormEx.dirty || documentFormEx.touched)">Campo válido</mdb-success>
               </div>
 
               <div class="md-form">

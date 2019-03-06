@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, ViewChild, OnInit, ElementRef} from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +7,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  @ViewChild('sidenav') sidenav: ElementRef;
+
+  clicked: boolean;
+
+  constructor() {
+    this.clicked = this.clicked !== undefined;
+  }
 
   ngOnInit() {
+  }
+
+  setClicked(val: boolean): void {
+    this.clicked = val;
   }
 
 }

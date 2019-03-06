@@ -13,12 +13,13 @@ export class LoginComponent implements OnInit {
 
   constructor(public fb: FormBuilder, public route: Router) {
     this.validateForm = fb.group({
-      emailFormEx: [null, [Validators.required, Validators.email]],
-      passwordFormEx: [null, Validators.required],
+      // @ts-ignore
+      documentFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(10)], Validators.pattern('^[0-9]*$')),
+      passwordFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
     });
   }
 
-  get emailFormEx() { return this.validateForm.get('emailFormEx'); }
+  get documentFormEx() { return this.validateForm.get('documentFormEx'); }
   get passwordFormEx() { return this.validateForm.get('passwordFormEx'); }
 
   ngOnInit() {
