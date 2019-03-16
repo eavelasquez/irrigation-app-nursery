@@ -10,17 +10,17 @@
 
     <div class="list-group list-group-flush">
 
-      <a [routerLink]="['/adduser']" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+      <a [routerLink]="['/adduser']" routerLinkActive="active green border-success" class="list-group-item list-group-item-action waves-effect">
         <mdb-icon fas icon="users-cog" class="mr-3"></mdb-icon>Administrador</a>
       <a [routerLink]="['/home']" routerLinkActive="active orange border-warning" class="list-group-item list-group-item-action waves-effect">
         <mdb-icon fas icon="leaf" class="mr-3"></mdb-icon>Líneas de riego</a>
-      <a [routerLink]="['/configuration']" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+      <a [routerLink]="['/configuration']" routerLinkActive="active green border-success" class="list-group-item list-group-item-action waves-effect">
         <mdb-icon fas icon="cog" class="mr-3"></mdb-icon>Configuración
       </a>
 
     </div>
 
-    <div class="list-group list-group-flush fixed-bottom">
+    <div class="list-group list-group-flush">
       <a [routerLink]="['/login']" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
         <mdb-icon fas icon="user-slash" class="mr-3"></mdb-icon>Salir</a>
     </div>
@@ -32,7 +32,7 @@
   <mdb-navbar [containerInside]="false" SideClass="navbar navbar-expand-lg navbar-light white">
      <!--Navbar brand-->
     <logo class="ml-3">
-      <a class="navbar-brand" href="#">
+      <a class="navbar-brand" [routerLink]="['/home']">
         <strong class="green-text text-uppercase">Leaf</strong>
       </a>
     </logo>

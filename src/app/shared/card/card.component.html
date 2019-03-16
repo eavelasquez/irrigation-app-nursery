@@ -1,0 +1,24 @@
+<!-- Card -->
+<mdb-card>
+  <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+    <!-- Card img -->
+    <mdb-card-img [src]="img" alt="Card image cap"></mdb-card-img>
+    <a>
+      <div class="mask"></div>
+    </a>
+  </div>
+  <!--Card content-->
+  <mdb-card-body>
+    <!--Title-->
+    <mdb-card-title>
+      <h5>{{ titulo }} <mdb-badge default="true">Estado</mdb-badge></h5>
+    </mdb-card-title>
+    <!--Text-->
+    <mdb-card-text>
+      <div class="progress">
+        <div class="progress-bar green" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25 %</div>
+      </div>
+    </mdb-card-text>
+  </mdb-card-body>
+</mdb-card>
+<!-- Card -->

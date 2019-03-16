@@ -1,3 +1,149 @@
-<p>
-  add-user works!
-</p>
+<div class="row">
+  <div class="col-sm-6 mb-md-0">
+    <blockquote class="blockquote bq-success">
+      <h2 class="bq-title">Registrar un usuario</h2>
+    </blockquote>
+
+    <!-- Material form register -->
+    <mdb-card borderColor="border-light">
+      <mdb-card-body>
+        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <!-- Form grid -->
+        <form [formGroup]="validateForm" autocomplete="off">
+          <!-- Grid row -->
+          <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-md-12">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput mdbValidate formControlName="documentFormEx" type="text" class="form-control" id="inputDocument" placeholder="Documento">
+                <label for="inputDocument">Documento</label>
+                <mdb-error *ngIf="documentFormEx.invalid && (documentFormEx.dirty || documentFormEx.touched)">Campo inválido
+                </mdb-error>
+                <mdb-success *ngIf="documentFormEx.valid && (documentFormEx.dirty || documentFormEx.touched)">Campo válido
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-6">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput mdbValidate formControlName="nameFormEx" type="text" class="form-control" id="inputName" placeholder="Nombre">
+                <label for="inputName">Nombre</label>
+                <mdb-error *ngIf="nameFormEx.invalid && (nameFormEx.dirty || nameFormEx.touched)">Campo inválido
+                </mdb-error>
+                <mdb-success *ngIf="nameFormEx.valid && (nameFormEx.dirty || nameFormEx.touched)">Campo válido
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-6">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput mdbValidate formControlName="surnameFormEx" type="text" class="form-control" id="inputSurname" placeholder="Apellido">
+                <label for="inputSurname">Apellido</label>
+                <mdb-error *ngIf="surnameFormEx.invalid && (surnameFormEx.dirty || surnameFormEx.touched)">Campo inválido
+                </mdb-error>
+                <mdb-success *ngIf="surnameFormEx.valid && (surnameFormEx.dirty || surnameFormEx.touched)">Campo válido
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+
+          <!-- Grid row -->
+          <div class="form-row">
+            <!-- Grid column -->
+            <div class="col-md-12">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput mdbValidate formControlName="emailFormEx" type="email" class="form-control" id="inputEmail" placeholder="Correo electrónico" aria-describedby="materialRegisterFormEmail">
+                <label for="inputEmail">Correo electrónico</label>
+                <small id="materialRegisterFormEmail" class="form-text text-muted text-center">
+                  Opcional - Autenticación dos pasos
+                </small>
+                <mdb-error *ngIf="emailFormEx.invalid && (emailFormEx.dirty || emailFormEx.touched)">Campo inválido
+                </mdb-error>
+                <mdb-success *ngIf="emailFormEx.valid && (emailFormEx.dirty || emailFormEx.touched)">Campo válido
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+
+          <!-- Grid row -->
+          <div class="row">
+            <!-- Grid column -->
+            <div class="col-md-6">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput mdbValidate formControlName="passwordFormEx" type="password" class="form-control" id="inputPassword1" placeholder="Contraseña" aria-describedby="materialRegisterFormPassword">
+                <label for="inputPassword1">Contraseña</label>
+                <mdb-error *ngIf="passwordFormEx.invalid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo inválido
+                </mdb-error>
+                <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo válido
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+
+            <!-- Grid column -->
+            <div class="col-md-6">
+              <!-- Material input -->
+              <div class="md-form form-group">
+                <input mdbInput mdbValidate formControlName="passwordFormEx" type="password" class="form-control" id="inputPassword2" placeholder="Confirmar contraseña">
+                <label for="inputPassword2">Confirmar contraseña</label>
+                <mdb-error *ngIf="passwordFormEx.invalid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo inválido
+                </mdb-error>
+                <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo válido
+                </mdb-success>
+              </div>
+            </div>
+            <!-- Grid column -->
+          </div>
+          <!-- Grid row -->
+          <button mdbBtn type="button" color="dark-green" class="float-right" mdbWavesEffect><mdb-icon fas icon="sync" class="mr-1 fa-spin"></mdb-icon>Crear usuario</button>
+        </form>
+        <!-- Form grid -->
+      </mdb-card-body>
+    </mdb-card>
+    <!-- Material form register -->
+
+  </div>
+
+  <div class="col-sm-6 mb-md-0">
+    <blockquote class="blockquote bq-success">
+      <h2 class="bq-title">Listar usuarios</h2>
+    </blockquote>
+
+    <mdb-card>
+      <mdb-card-header class="text-center">Usuarios</mdb-card-header>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">Diego Restrepo</li>
+        <li class="list-group-item">Esteban Velásquez</li>
+      </ul>
+    </mdb-card>
+    <hr>
+
+  </div>
+</div>
+
+<!--<mdb-icon fas icon="lock" size="lg" class="prefix"></mdb-icon>-->
+
+<!--<button (click)="ejecutar()"-->
+        <!--type="button" name="button"-->
+        <!--class="btn btn-primary"-->
+        <!--[disabled]="loading">-->
+
+  <!--<i [ngClass]="{ 'fa-save': !loading, 'fa-refresh fa-spin': loading }"-->
+     <!--class="fa"></i>-->
+  <!--<span *ngIf="!loading"> Guardar cambios</span>-->
+  <!--<span *ngIf="loading"> Espere por favor</span>-->
+<!--</button>-->
+
