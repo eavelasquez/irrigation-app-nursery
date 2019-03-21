@@ -73,7 +73,7 @@
             <h4 class="text-center text-uppercase green-text">Vivero</h4>
           </mdb-card-title>
           <mdb-card-text>
-            <form (ngSubmit)="home()" [formGroup]="validateForm">
+            <form ngNativeValidate (ngSubmit)="login()" [formGroup]="validateForm" autocomplete="off">
               <div class="md-form">
                 <i class="fas fa-user prefix"></i>
                 <input mdbInput mdbValidate formControlName="documentFormEx" type="text" class="form-control" id="form1">

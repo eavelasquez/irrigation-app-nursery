@@ -35,7 +35,8 @@ export class AddUserComponent implements OnInit {
 
   addUser() {
     if ( this.validateForm.invalid ) { return; }
-    console.log( 'Formulario válido: ' + this.validateForm.valid + this.validateForm.value);
+    console.log(this.validateForm.value);
+    console.log( 'Formulario válido: ' + this.validateForm.valid);
     const user = new User(
       this.validateForm.value.documentFormEx,
       this.validateForm.value.nameFormEx,
