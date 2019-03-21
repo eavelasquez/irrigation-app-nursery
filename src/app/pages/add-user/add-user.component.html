@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="col-sm-6 mb-md-0">
+  <div class="col-sm-12 col-md-6 mb-md-0">
     <blockquote class="blockquote bq-success">
       <h2 class="bq-title">Registrar un usuario</h2>
     </blockquote>
@@ -9,7 +9,7 @@
       <mdb-card-body>
         <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
         <!-- Form grid -->
-        <form [formGroup]="validateForm" autocomplete="off">
+        <form ngNativeValidate [formGroup]="validateForm" (ngSubmit)="addUser()" autocomplete="off">
           <!-- Grid row -->
           <div class="form-row">
             <!-- Grid column -->
@@ -97,18 +97,18 @@
             <div class="col-md-6">
               <!-- Material input -->
               <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="passwordFormEx" type="password" class="form-control" id="inputPassword2" placeholder="Confirmar contraseña">
+                <input mdbInput mdbValidate formControlName="passwordConfirmFormEx" type="password" class="form-control" id="inputPassword2" placeholder="Confirmar contraseña">
                 <label for="inputPassword2">Confirmar contraseña</label>
-                <mdb-error *ngIf="passwordFormEx.invalid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo inválido
+                <mdb-error *ngIf="passwordConfirmFormEx.invalid && (passwordConfirmFormEx.dirty || passwordConfirmFormEx.touched)">Campo inválido
                 </mdb-error>
-                <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo válido
+                <mdb-success *ngIf="passwordConfirmFormEx.valid && (passwordConfirmFormEx.dirty || passwordConfirmFormEx.touched)">Campo válido
                 </mdb-success>
               </div>
             </div>
             <!-- Grid column -->
           </div>
           <!-- Grid row -->
-          <button mdbBtn type="button" color="dark-green" class="float-right" mdbWavesEffect><mdb-icon fas icon="sync" class="mr-1 fa-spin"></mdb-icon>Crear usuario</button>
+          <button mdbBtn type="submit" color="dark-green" class="float-right" mdbWavesEffect><mdb-icon fas icon="sync" class="mr-1 fa-spin"></mdb-icon>Crear usuario</button>
         </form>
         <!-- Form grid -->
       </mdb-card-body>
@@ -117,16 +117,20 @@
 
   </div>
 
-  <div class="col-sm-6 mb-md-0">
+  <div class="col-sm-12 col-md-6 mb-md-0">
     <blockquote class="blockquote bq-success">
       <h2 class="bq-title">Listar usuarios</h2>
     </blockquote>
 
     <mdb-card>
-      <mdb-card-header class="text-center">Usuarios</mdb-card-header>
+      <mdb-card-header class="text-center"><li class="fas fa-user"></li></mdb-card-header>
+
       <ul class="list-group list-group-flush">
-        <li class="list-group-item">Diego Restrepo</li>
-        <li class="list-group-item">Esteban Velásquez</li>
+        <li class="list-group-item active">
+          <div class="md-v-line"></div><i class="mr-4 pr-3">Documento</i> Nombre completo
+        </li>
+        <li class="list-group-item">
+          <i class="mr-4 pr-3">1000245841</i><div class="md-v-line"></div> Usuario uno
       </ul>
     </mdb-card>
     <hr>

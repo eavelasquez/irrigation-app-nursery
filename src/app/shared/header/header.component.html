@@ -11,18 +11,25 @@
     <div class="list-group list-group-flush">
 
       <a [routerLink]="['/adduser']" routerLinkActive="active green border-success" class="list-group-item list-group-item-action waves-effect">
-        <mdb-icon fas icon="users-cog" class="mr-3"></mdb-icon>Administrador</a>
-      <a [routerLink]="['/home']" routerLinkActive="active orange border-warning" class="list-group-item list-group-item-action waves-effect">
-        <mdb-icon fas icon="leaf" class="mr-3"></mdb-icon>Líneas de riego</a>
-      <a [routerLink]="['/configuration']" routerLinkActive="active green border-success" class="list-group-item list-group-item-action waves-effect">
-        <mdb-icon fas icon="cog" class="mr-3"></mdb-icon>Configuración
+        <mdb-icon fas icon="users-cog" class="mr-3"></mdb-icon>Administrador
       </a>
-
-    </div>
-
-    <div class="list-group list-group-flush">
+      <a [routerLink]="['/home']" routerLinkActive="active orange border-warning" class="list-group-item list-group-item-action waves-effect">
+        <mdb-icon fas icon="leaf" class="mr-3"></mdb-icon>Líneas de riego
+      </a>
+      <!-- Collapse -->
+      <a (click)="test.toggle()" routerLinkActive="active green border-success" class="list-group-item list-group-item-action waves-effect">
+        <mdb-icon fas icon="cog" class="mr-3"></mdb-icon>Configuración <mdb-badge color="orange" class="float-right">{{ collapseService.collapse.length }}</mdb-badge>
+      </a>
+      <div mdbCollapse [isCollapsed]="true" #test="bs-collapse">
+        <ul *ngFor="let collapse of collapseService.collapse" class="list-group list-group-flush">
+          <li class="list-group-item waves-light">
+            <a href="#" class="list-group-item-action" mdbWavesEffect><mdb-icon fas [icon]="collapse.icon" class="mr-2 ml-2"></mdb-icon>{{ collapse.title }}</a>
+          </li>
+        </ul>
+      </div>
       <a [routerLink]="['/login']" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
-        <mdb-icon fas icon="user-slash" class="mr-3"></mdb-icon>Salir</a>
+        <mdb-icon fas icon="user-slash" class="mr-3"></mdb-icon>Salir
+      </a>
     </div>
 
   </div>

@@ -1,4 +1,5 @@
-import {Component, ViewChild, OnInit, ElementRef} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { CollapseService } from '../../services/service.index';
 
 @Component({
   selector: 'app-header',
@@ -7,11 +8,9 @@ import {Component, ViewChild, OnInit, ElementRef} from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  @ViewChild('sidenav') sidenav: ElementRef;
+  public clicked: boolean;
 
-  clicked: boolean;
-
-  constructor() {
+  constructor( public collapseService: CollapseService ) {
     this.clicked = this.clicked !== undefined;
   }
 
