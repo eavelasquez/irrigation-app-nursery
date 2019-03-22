@@ -27,7 +27,7 @@
           </li>
         </ul>
       </div>
-      <a [routerLink]="['/login']" routerLinkActive="active" class="list-group-item list-group-item-action waves-effect">
+      <a (click)="logoutUser()" class="list-group-item list-group-item-action waves-effect">
         <mdb-icon fas icon="user-slash" class="mr-3"></mdb-icon>Salir
       </a>
     </div>

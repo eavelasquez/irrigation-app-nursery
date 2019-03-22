@@ -1,8 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 import { PagesComponent } from './pages.component';
-import {HomeComponent} from './home/home.component';
-import {AddUserComponent} from './add-user/add-user.component';
-import {ConfigurationComponent} from './configuration/configuration.component';
+import { HomeComponent } from './home/home.component';
+import { AddUserComponent } from './add-user/add-user.component';
+import { ConfigurationComponent } from './configuration/configuration.component';
+import { LoginGuard } from '../services/service.index';
 
 
 
@@ -10,6 +11,7 @@ const pagesRoutes: Routes = [
   {
     path: '',
     component: PagesComponent,
+    canActivate: [ LoginGuard ],
     children: [
       { path: 'home', component: HomeComponent, data: { title: 'Inicio' } },
       { path: 'configuration', component: ConfigurationComponent, data: { title: 'Configuración' } },

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CollapseService } from '../../services/service.index';
+import { CollapseService, UserService } from '../../services/service.index';
 
 @Component({
   selector: 'app-header',
@@ -10,15 +10,13 @@ export class HeaderComponent implements OnInit {
 
   public clicked: boolean;
 
-  constructor( public collapseService: CollapseService ) {
-    this.clicked = this.clicked !== undefined;
-  }
+  constructor( public collapseService: CollapseService, public userService: UserService ) {}
 
   ngOnInit() {
   }
 
-  setClicked(val: boolean): void {
-    this.clicked = val;
+  logoutUser() {
+    this.userService.logoutUser();
   }
 
 }

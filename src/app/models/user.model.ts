@@ -8,3 +8,10 @@ export class User {
     public _id?: string
   ) {}
 }
+
+export class AuthUser {
+  constructor(
+    public CC: string,
+    public contrasena: string
+  ) {}
+}
