@@ -10,14 +10,14 @@
 
     <div class="list-group list-group-flush">
 
-      <a [routerLink]="['/adduser']" routerLinkActive="active green border-success" class="list-group-item list-group-item-action waves-effect">
+      <a [routerLink]="['/adduser']" routerLinkActive="active light-green border-0" class="list-group-item list-group-item-action waves-effect">
         <mdb-icon fas icon="users-cog" class="mr-3"></mdb-icon>Administrador
       </a>
       <a [routerLink]="['/home']" routerLinkActive="active orange border-warning" class="list-group-item list-group-item-action waves-effect">
         <mdb-icon fas icon="leaf" class="mr-3"></mdb-icon>Líneas de riego
       </a>
       <!-- Collapse -->
-      <a (click)="test.toggle()" routerLinkActive="active green border-success" class="list-group-item list-group-item-action waves-effect">
+      <a (click)="test.toggle()" routerLinkActive="active light-green border-0" class="list-group-item list-group-item-action waves-effect">
         <mdb-icon fas icon="cog" class="mr-3"></mdb-icon>Configuración <mdb-badge color="orange" class="float-right">{{ collapseService.collapse.length }}</mdb-badge>
       </a>
       <div mdbCollapse [isCollapsed]="true" #test="bs-collapse">
@@ -43,6 +43,14 @@
         <strong class="green-text text-uppercase">Leaf</strong>
       </a>
     </logo>
+    <!-- Collapsible content -->
+    <links>
+      <ul class="navbar-nav ml-auto nav-flex-icons">
+        <li class="nav-item">
+          <a mdbBtn (click)="editUser()" type="button" color="light-green" mdbWavesEffect><mdb-icon fas icon="user-edit"></mdb-icon></a>
+        </li>
+      </ul>
+    </links>
   </mdb-navbar>
   <!--/.Navbar-->
 </header>

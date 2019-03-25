@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CollapseService, UserService } from '../../services/service.index';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +9,19 @@ import { CollapseService, UserService } from '../../services/service.index';
 })
 export class HeaderComponent implements OnInit {
 
-  public clicked: boolean;
+  constructor( public collapseService: CollapseService, public userService: UserService, public router: Router ) {}
 
-  constructor( public collapseService: CollapseService, public userService: UserService ) {}
+  public CC: string = this.userService.user.CC;
 
   ngOnInit() {
   }
 
   logoutUser() {
     this.userService.logoutUser();
+  }
+
+  editUser() {
+    this.router.navigate(['/edituser', this.CC]);
   }
 
 }

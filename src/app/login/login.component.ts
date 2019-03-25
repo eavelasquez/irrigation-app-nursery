@@ -11,6 +11,7 @@ import { AuthUser } from '../models/user.model';
 })
 export class LoginComponent implements OnInit {
 
+  title = 'Vivero';
   validateForm: FormGroup;
 
   constructor(public fb: FormBuilder, public router: Router, public userService: UserService) {

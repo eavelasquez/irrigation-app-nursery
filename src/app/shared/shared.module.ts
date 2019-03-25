@@ -9,6 +9,8 @@ import { NopagefoundComponent } from './nopagefound/nopagefound.component';
 import { CardComponent } from './card/card.component';
 import { ModalComponent } from './modal/modal.component';
 import { CarouselComponent } from './carousel/carousel.component';
+import { AlertComponent } from './alert/alert.component';
+import { BlockquoteComponent } from './blockquote/blockquote.component';
 
 @NgModule({
   declarations: [
@@ -16,14 +18,18 @@ import { CarouselComponent } from './carousel/carousel.component';
     NopagefoundComponent,
     CardComponent,
     ModalComponent,
-    CarouselComponent
+    CarouselComponent,
+    AlertComponent,
+    BlockquoteComponent
   ],
   exports: [
     HeaderComponent,
     NopagefoundComponent,
     CardComponent,
     ModalComponent,
-    CarouselComponent
+    CarouselComponent,
+    AlertComponent,
+    BlockquoteComponent
   ],
   imports: [
     CommonModule,

@@ -11,13 +11,15 @@ import { HomeComponent } from './home/home.component';
 import { ConfigurationComponent } from './configuration/configuration.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { PagesComponent } from './pages.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     ConfigurationComponent,
     AddUserComponent,
-    PagesComponent
+    PagesComponent,
+    EditUserComponent
   ],
   exports: [
     HomeComponent,

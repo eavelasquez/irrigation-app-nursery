@@ -23,8 +23,8 @@ export class HomeComponent implements OnInit {
       focus: true,
       show: false,
       ignoreBackdropClick: false,
-      class: 'modal-side modal-top-right',
-      containerClass: 'right',
+      class: '',
+      containerClass: '',
       animated: true,
       data: {
         heading: 'Batería',
@@ -40,8 +40,8 @@ export class HomeComponent implements OnInit {
       focus: true,
       show: false,
       ignoreBackdropClick: false,
-      class: 'modal-side modal-bottom-right',
-      containerClass: 'right',
+      class: '',
+      containerClass: '',
       animated: true,
       data: {
         heading: 'Tanque de agua',

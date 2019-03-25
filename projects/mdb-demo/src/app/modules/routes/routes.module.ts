@@ -94,7 +94,7 @@ const routes: Routes = [
   {
     path: 'advanced', component: AdvancedMainComponent, children: [
       { path: 'carousel', component: CarouselComponent },
-      { path: 'carousel-fullpage', component: CarouselFullpageExampleComponent },
+      { path: 'img-carousel-fullpage', component: CarouselFullpageExampleComponent },
       { path: 'collapse', component: CollapseComponent },
       { path: 'charts', component: ChartsComponent },
       { path: 'popover', component: PopoverComponent },

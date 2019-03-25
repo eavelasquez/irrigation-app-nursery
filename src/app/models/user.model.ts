@@ -1,9 +1,9 @@
 export class User {
   constructor(
-    public document: string,
-    public name: string,
-    public surname: string,
-    public password: string,
+    public CC: string,
+    public nombre: string,
+    public apellido: string,
+    public contrasena: string,
     public email?: string,
     public _id?: string
   ) {}
@@ -13,5 +13,14 @@ export class AuthUser {
   constructor(
     public CC: string,
     public contrasena: string
+  ) {}
+}
+
+export class UpdateUser {
+  constructor(
+    public CC: string,
+    public nombre: string,
+    public apellido: string,
+    public _id?: string
   ) {}
 }

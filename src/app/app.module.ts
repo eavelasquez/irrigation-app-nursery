@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 
 import { PagesModule } from './pages/pages.module';
+import { PipesModule } from './pipes/pipes.module';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PagesModule } from './pages/pages.module';
     FormsModule,
     ReactiveFormsModule,
     PagesModule,
-    APP_ROUTES
+    APP_ROUTES,
+    PipesModule
   ],
   providers: [],
   bootstrap: [AppComponent]

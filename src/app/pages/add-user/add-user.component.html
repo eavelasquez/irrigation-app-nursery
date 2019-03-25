@@ -1,13 +1,10 @@
 <div class="row">
   <div class="col-sm-12 col-md-6 mb-md-0">
-    <blockquote class="blockquote bq-success">
-      <h2 class="bq-title">Registrar un usuario</h2>
-    </blockquote>
-
+    <app-blockquote [title]="'Registrar un usuario'"></app-blockquote>
     <!-- Material form register -->
     <mdb-card borderColor="border-light">
       <mdb-card-body>
-        <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+        <button (click)="clearForm()" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
         <!-- Form grid -->
         <form ngNativeValidate [formGroup]="validateForm" (ngSubmit)="addUser()" autocomplete="off">
           <!-- Grid row -->
@@ -65,7 +62,7 @@
                 <input mdbInput mdbValidate formControlName="emailFormEx" type="email" class="form-control" id="inputEmail" placeholder="Correo electrónico" aria-describedby="materialRegisterFormEmail">
                 <label for="inputEmail">Correo electrónico</label>
                 <small id="materialRegisterFormEmail" class="form-text text-muted text-center">
-                  Opcional - Autenticación dos pasos
+                  Opcional
                 </small>
                 <mdb-error *ngIf="emailFormEx.invalid && (emailFormEx.dirty || emailFormEx.touched)">Campo inválido
                 </mdb-error>
@@ -108,7 +105,10 @@
             <!-- Grid column -->
           </div>
           <!-- Grid row -->
-          <button mdbBtn type="submit" color="dark-green" class="float-right" mdbWavesEffect><mdb-icon fas icon="sync" class="mr-1 fa-spin"></mdb-icon>Crear usuario</button>
+          <button mdbBtn type="submit" color="light-green" class="float-right" mdbWavesEffect>
+            <mdb-icon fas icon="save" class="mr-1"></mdb-icon>
+            Crear usuario
+          </button>
         </form>
         <!-- Form grid -->
       </mdb-card-body>
@@ -117,36 +117,40 @@
   </div>
 
   <div class="col-sm-12 col-md-6 mb-md-0">
-    <blockquote class="blockquote bq-success">
-      <h2 class="bq-title">Listar usuarios</h2>
-    </blockquote>
+    <app-blockquote [title]="'Lista de usuarios'"></app-blockquote>
 
-    <mdb-card>
-      <mdb-card-header class="text-center"><li class="fas fa-user"></li></mdb-card-header>
+    <app-alert *ngIf="loading"></app-alert>
 
-      <ul class="list-group list-group-flush">
-        <li class="list-group-item active">
-          <div class="md-v-line"></div><i class="mr-4 pr-3">Documento</i> Nombre completo
-        </li>
-        <li class="list-group-item">
-          <i class="mr-4 pr-3">1000245841</i><div class="md-v-line"></div> Usuario uno
-      </ul>
+    <mdb-card borderColor="border-light">
+      <mdb-card-header class="text-center"><li class="fas fa-user mr-2"></li><mdb-badge default="true">{{ users.length }}</mdb-badge></mdb-card-header>
+      <table mdbTable small="true">
+        <thead>
+          <tr class="font-italic font-weight-normal">
+            <th *ngFor="let element of elements" scope="col">{{ element }}</th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody *ngIf="!loading">
+          <tr *ngFor="let user of users; let i = index">
+            <th *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">{{ user.CC }}</th>
+            <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{ user.nombre }} {{ user.apellido }}</td>
+            <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
+              <button (click)="updateUser(user)" type="button" mdbBtn color="default" size="sm" class="m-0 mr-1 p-1" mdbWavesEffect><mdb-icon fas icon="edit"></mdb-icon></button>
+              <button (click)="deleteUser(user)" type="button" mdbBtn color="danger" size="sm" class="m-0 ml-1 p-1" mdbWavesEffect><mdb-icon fas icon="trash"></mdb-icon></button>
+            </td>
+          </tr>
+        </tbody>
+        <tfoot class="grey lighten-5 w-100">
+          <tr>
+            <td class="colspan">
+              <mdb-table-pagination [searchDataSource]="users" (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)"></mdb-table-pagination>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
     </mdb-card>
-    <hr>
+    <hr class="my-4">
 
   </div>
 </div>
-
-<!--<mdb-icon fas icon="lock" size="lg" class="prefix"></mdb-icon>-->
-
-<!--<button (click)="ejecutar()"-->
-        <!--type="button" name="button"-->
-        <!--class="btn btn-primary"-->
-        <!--[disabled]="loading">-->
-
-  <!--<i [ngClass]="{ 'fa-save': !loading, 'fa-refresh fa-spin': loading }"-->
-     <!--class="fa"></i>-->
-  <!--<span *ngIf="!loading"> Guardar cambios</span>-->
-  <!--<span *ngIf="loading"> Espere por favor</span>-->
-<!--</button>-->
 

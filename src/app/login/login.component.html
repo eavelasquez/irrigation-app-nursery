@@ -3,63 +3,24 @@
     <div class="col-md-8">
       <!-- Card -->
       <mdb-card>
-        <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-          <!-- Card img -->
-          <app-carousel></app-carousel>
+        <mdb-card-body class="mt-2 mb-2">
+        <!--Card content-->
+          <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+            <!-- Carousel -->
+            <app-carousel></app-carousel>
+          </div>
           <a>
             <div class="mask"></div>
           </a>
-        </div>
-        <!--Card content-->
-        <mdb-card-body>
-          <!--Title-->
-          <mdb-card-title>
-            <h4>CTGI - Vivero</h4>
-          </mdb-card-title>
-
-          <!--Text-->
-          <mdb-card-text>Necesitamos un slogan atractivo.</mdb-card-text>
-
-          <a href="#" mdbBtn color="orange" class="float-right" size="sm" mdbWavesEffect>Ver vivero</a>
+          <blockquote class="blockquote mb-0 mt-2">
+            <div class="flex-row">
+              <a href="#" mdbBtn color="orange" class="float-right m-3" size="sm" mdbWavesEffect><mdb-icon fas icon="eye" class="mr-1"></mdb-icon>Ver vivero</a>
+            </div>
+            <footer class="blockquote-footer">Una frase interesante <cite title="Source Title">Slogan</cite></footer>
+          </blockquote>
         </mdb-card-body>
       </mdb-card>
       <!-- Card -->
-      <!--<mdb-card>
-        <mdb-card-body>
-          <mdb-carousel class="carousel slide carousel-fade" [animation]="'fade'">
-            <mdb-carousel-item>
-              <div class="view w-100">
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(68).jpg" alt="First slide">
-                <div class="mask rgba-black-light waves-light" mdbWavesEffect></div>
-              </div>
-              <div class="carousel-caption">
-                <h3 class="h3-responsive">Light mask</h3>
-                <p>First text</p>
-              </div>
-            </mdb-carousel-item>
-            <mdb-carousel-item>
-              <div class="view w-100">
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(6).jpg" alt="Second slide">
-                <div class="mask rgba-black-strong waves-light" mdbWavesEffect></div>
-              </div>
-              <div class="carousel-caption">
-                <h3 class="h3-responsive">Strong mask</h3>
-                <p>Secondary text</p>
-              </div>
-            </mdb-carousel-item>
-            <mdb-carousel-item>
-              <div class="view w-100">
-                <img class="d-block w-100" src="https://mdbootstrap.com/img/Photos/Slides/img%20(9).jpg" alt="Third slide">
-                <div class="mask rgba-black-slight waves-light" mdbWavesEffect></div>
-              </div>
-              <div class="carousel-caption">
-                <h3 class="h3-responsive">Slight mask</h3>
-                <p>Third text</p>
-              </div>
-            </mdb-carousel-item>
-          </mdb-carousel>
-        </mdb-card-body>
-      </mdb-card>-->
     </div>
 
     <div class="col-md-4">
@@ -70,7 +31,7 @@
         </div>
         <mdb-card-body>
           <mdb-card-title>
-            <h4 class="text-center text-uppercase green-text">Vivero</h4>
+            <h4 class="text-center text-uppercase green-text">{{ title }}</h4>
           </mdb-card-title>
           <mdb-card-text>
             <form ngNativeValidate (ngSubmit)="login()" [formGroup]="validateForm" autocomplete="off">
@@ -90,7 +51,7 @@
                 </mdb-error>
                 <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo válido
                 </mdb-success>
-                <button mdbBtn type="submit" color="light-green" block="true" rounded="true" mdbWavesEffect>Ingresar</button>
+                <button mdbBtn type="submit" color="light-green" block="true" mdbWavesEffect>Ingresar</button>
               </div>
             </form>
           </mdb-card-text>

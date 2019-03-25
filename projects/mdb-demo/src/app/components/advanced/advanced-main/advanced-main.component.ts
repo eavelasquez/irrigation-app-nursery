@@ -10,8 +10,8 @@ export class AdvancedMainComponent implements DoCheck {
 
   isChildRouteLoaded = false;
   itemsArray = [
-    { id: 1, name: 'Carousel', description: 'On this page you will find examples of Angular Carousel', link: '/advanced/carousel' },
-    { id: 2, name: 'Fullpage Carousel', description: 'On this page you will find example of Angular Fullpage Carousel', link: '/advanced/carousel-fullpage' },
+    { id: 1, name: 'Carousel', description: 'On this page you will find examples of Angular Carousel', link: '/advanced/img-carousel' },
+    { id: 2, name: 'Fullpage Carousel', description: 'On this page you will find example of Angular Fullpage Carousel', link: '/advanced/img-carousel-fullpage' },
     { id: 3, name: 'Collapse', description: 'On this page you will find examples of Angular Collapse & Accordion', link: '/advanced/collapse' },
     { id: 4, name: 'Charts', description: 'On this page you will find examples of Angular Charts', link: '/advanced/charts' },
     { id: 5, name: 'Popover', description: 'On this page you will find examples of Angular Popover', link: '/advanced/popover' },
