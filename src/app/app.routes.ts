@@ -5,7 +5,8 @@ import {NopagefoundComponent} from './shared/nopagefound/nopagefound.component';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '**', component: NopagefoundComponent }
+  { path: '**', component: NopagefoundComponent },
+  { path: '', redirectTo: '/login', pathMatch: 'full' }
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(routes, {useHash: true});

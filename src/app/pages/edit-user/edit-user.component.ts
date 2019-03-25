@@ -49,6 +49,7 @@ export class EditUserComponent implements OnInit {
   }
 
   updateUser() {
+    console.log(this.validateForm.invalid);
     if ( this.validateForm.invalid ) { return; }
     const user = new UpdateUser(
       this.validateForm.value.documentFormEx,

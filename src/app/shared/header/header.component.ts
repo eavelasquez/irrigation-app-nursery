@@ -22,6 +22,7 @@ export class HeaderComponent implements OnInit {
 
   editUser() {
     this.router.navigate(['/edituser', this.CC]);
+    this.userService.findUser(this.CC);
   }
 
 }
