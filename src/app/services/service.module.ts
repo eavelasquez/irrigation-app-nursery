@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 
-import {CollapseService, LoginGuard, UserService} from './service.index';
+import { CollapseService, LoginGuard, NotLoginGuard, UserService } from './service.index';
 
 @NgModule({
   declarations: [],
@@ -13,7 +13,8 @@ import {CollapseService, LoginGuard, UserService} from './service.index';
   providers: [
     CollapseService,
     UserService,
-    LoginGuard
+    LoginGuard,
+    NotLoginGuard
   ]
 })
 export class ServiceModule { }
