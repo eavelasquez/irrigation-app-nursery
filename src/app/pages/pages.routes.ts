@@ -17,7 +17,7 @@ const pagesRoutes: Routes = [
       { path: 'configuration', component: ConfigurationComponent, data: { title: 'Configuración' } },
       { path: 'adduser', component: AddUserComponent, data: { title: 'Agregar usuario' } },
       { path: 'edituser/:CC', component: EditUserComponent, data: { title: 'Editar usuario' } },
-      { path: '', redirectTo: '/home', pathMatch: 'full' }
+      { path: '', redirectTo: '/login', pathMatch: 'full' }
     ]
   }
 ];

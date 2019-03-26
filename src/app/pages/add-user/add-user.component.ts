@@ -124,7 +124,8 @@ export class AddUserComponent implements OnInit, AfterViewInit {
               closeModal: true
             }
           },
-          timer: 2400 });
+          timer: 2400
+        });
       }
     });
   }
