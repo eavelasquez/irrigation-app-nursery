@@ -11,13 +11,14 @@ import { Router } from '@angular/router';
 export class UserService {
 
   user: User;
-  token: string;
+  Authorization: string;
 
   constructor( public http: HttpClient, public router: Router ) { this.loadStorage(); }
 
 // Authentication
   loginUser( user: AuthUser ) {
-    const url = URL_SERVICES + '/login';
+    console.log(user);
+    const url = URL_SERVICES + '/usuario/login';
     return this.http.post( url, user ).pipe( map((response: any) => {
       this.saveStorage(response.usuario._id, response.Authorization, response.usuario);
     }));
@@ -25,36 +26,36 @@ export class UserService {
 
   logoutUser() {
     this.user = null;
-    this.token = '';
+    this.Authorization = '';
     localStorage.clear();
     this.router.navigate(['/login']);
   }
 
   authLogin(): boolean {
-    return (this.token.length > 5);
+    return (this.Authorization.length > 5);
   }
 
 // Request HTTP - CRUD
   postUser( user: User ) {
-    const url = URL_SERVICES + '/usuarios';
+    const url = URL_SERVICES + '/usuario';
     const headers = new HttpHeaders({
-      'Authorization': localStorage.getItem('token')
+      'Authorization': localStorage.getItem('Authorization')
     });
     return this.http.post( url, user, { headers } );
   }
 
   getUser() {
-    const url = URL_SERVICES + '/usuarios';
+    const url = URL_SERVICES + '/usuario';
     const headers = new HttpHeaders({
-      'Authorization': localStorage.getItem('token')
+      'Authorization': localStorage.getItem('Authorization')
     });
     return this.http.get( url, { headers } );
   }
 
   findUser( CC: string ) {
-    const url = URL_SERVICES + '/usuarios/' + CC;
+    const url = URL_SERVICES + '/usuario/' + CC;
     const headers = new HttpHeaders({
-      'Authorization': localStorage.getItem('token')
+      'Authorization': localStorage.getItem('Authorization')
     });
     return this.http.get( url, { headers }  ).pipe( map( (response: any) => {
       return response.result;
@@ -62,36 +63,36 @@ export class UserService {
   }
 
   putUser( user: UpdateUser ) {
-    const url = URL_SERVICES + '/usuarios/';
+    const url = URL_SERVICES + '/usuario/';
     const headers = new HttpHeaders({
-      'Authorization': localStorage.getItem('token')
+      'Authorization': localStorage.getItem('Authorization')
     });
     return this.http.put( url, user, { headers } );
   }
 
   deleteUser( CC: string ) {
-    const url = URL_SERVICES + '/usuarios/' + CC;
+    const url = URL_SERVICES + '/usuario/' + CC;
     const headers = new HttpHeaders({
-      'Authorization': localStorage.getItem('token')
+      'Authorization': localStorage.getItem('Authorization')
     });
     return this.http.delete(url, { headers });
   }
 
 // Functions - LocalStorage
-  saveStorage(id: string, token: string, user: User) {
+  saveStorage(id: string, Authorization: string, user: User) {
     localStorage.setItem('id', id);
-    localStorage.setItem('token', token);
+    localStorage.setItem('Authorization', Authorization);
     localStorage.setItem('user', JSON.stringify(user));
     this.user = user;
-    this.token = token;
+    this.Authorization = Authorization;
   }
 
   loadStorage() {
-    if ( localStorage.getItem('token') ) {
-      this.token = localStorage.getItem('token');
+    if ( localStorage.getItem('Authorization') ) {
+      this.Authorization = localStorage.getItem('Authorization');
       this.user = JSON.parse(localStorage.getItem('user'));
     } else {
-      this.token = '';
+      this.Authorization = '';
       this.user = null;
     }
   }
