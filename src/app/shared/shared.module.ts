@@ -11,6 +11,7 @@ import { ModalComponent } from './modal/modal.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { AlertComponent } from './alert/alert.component';
 import { BlockquoteComponent } from './blockquote/blockquote.component';
+import { CardFormComponent } from './card-form/card-form.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { BlockquoteComponent } from './blockquote/blockquote.component';
     ModalComponent,
     CarouselComponent,
     AlertComponent,
-    BlockquoteComponent
+    BlockquoteComponent,
+    CardFormComponent
   ],
   exports: [
     HeaderComponent,
@@ -29,7 +31,8 @@ import { BlockquoteComponent } from './blockquote/blockquote.component';
     ModalComponent,
     CarouselComponent,
     AlertComponent,
-    BlockquoteComponent
+    BlockquoteComponent,
+    CardFormComponent
   ],
   imports: [
     CommonModule,

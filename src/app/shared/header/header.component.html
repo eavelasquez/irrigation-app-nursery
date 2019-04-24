@@ -23,7 +23,7 @@
       <div mdbCollapse [isCollapsed]="true" #test="bs-collapse">
         <ul *ngFor="let collapse of collapseService.collapse" class="list-group list-group-flush">
           <li class="list-group-item waves-light">
-            <a href="#" class="list-group-item-action" mdbWavesEffect><mdb-icon fas [icon]="collapse.icon" class="mr-2 ml-2"></mdb-icon>{{ collapse.title }}</a>
+            <a [routerLink]="collapse.url" class="list-group-item-action" mdbWavesEffect><mdb-icon fas [icon]="collapse.icon" class="mr-2 ml-2"></mdb-icon>{{ collapse.title }}</a>
           </li>
         </ul>
       </div>
