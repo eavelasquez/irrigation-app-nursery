@@ -13,10 +13,10 @@ export const bomba: Configuration = {
       type: 'number',
       pattern: '^[0-9]*$'
     },
+  ],
+  select: [
     {
       name: 'tanque',
-      type: 'text',
-      pattern: '^[a-zA-Z]+$'
     }
   ],
   url: '/bomba'
@@ -58,11 +58,11 @@ export const sensor: Configuration = {
       name: 'serial',
       type: 'text',
       pattern: '^[0-9]*$'
-    },
+    }
+  ],
+  select: [
     {
-      name: 'Planta',
-      type: 'text',
-      pattern: '^[0-9]*$'
+      name: 'planta',
     }
   ],
   url: '/sensor'
