@@ -11,7 +11,8 @@ export class HeaderComponent implements OnInit {
 
   constructor( public collapseService: CollapseService, public userService: UserService, public router: Router ) {}
 
-  public CC: string = this.userService.user.CC;
+  // public CC: string = this.userService.user.CC;
+  hide = true;
 
   ngOnInit() {
   }
@@ -21,8 +22,12 @@ export class HeaderComponent implements OnInit {
   }
 
   editUser() {
-    this.router.navigate(['/edituser', this.CC]);
-    this.userService.findUser(this.CC);
+    // this.router.navigate(['/edituser', this.CC]);
+    // this.userService.findUser(this.CC);
+  }
+
+  hideSide() {
+    this.hide = !this.hide;
   }
 
 }

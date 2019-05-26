@@ -13,11 +13,10 @@ export class NotLoginGuard implements CanActivate {
   canActivate() {
       if ( this.userService.token.length > 0 ) {
         // @ts-ignored
-        swal('Ya está autenticado', { buttons: false, timer: 1600 });
+        swal('Ya está autenticado.', { buttons: false, timer: 1600 });
         this.router.navigate(['/home']);
         return false;
       } else {
-        console.log(true);
         return true;
       }
     }
