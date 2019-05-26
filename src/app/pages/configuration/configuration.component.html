@@ -1,35 +1,33 @@
 <div class="row">
-  <div class="col-sm-12 col-md-6 mb-md-0">
-    <app-blockquote [title]="object.title"></app-blockquote>
-    <mdb-card borderColor="border-light">
-      <mdb-card-body>
-        <button  type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span>
-        </button>
-        <!-- Form grid -->
-        <form #forma="ngForm" ngNativeValidate autocomplete="off" (ngSubmit)="send(forma)">
-          <!-- Grid row -->
-          <div class="form-row">
-            <!-- Grid column -->
-            <div class="col-md-12" *ngFor="let attrib of object.inputs">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input mdbInput mdbValidate [type]="attrib.type" class="form-control" [name]="attrib.name" [(ngModel)]="model[attrib.name]"  id="inputDocument"
-                       [placeholder]="attrib.name | titlecase">
-                <label for="inputDocument">{{attrib.name | titlecase}}</label>
-              </div>
-            </div>
-            <div class="col-md-12" *ngIf="object.select">
-              <div class="md-form form-group" *ngFor="let select of selects" >
-                <p  class="text-muted" style="font-size: small">{{select.name | titlecase}}</p>
-                <select class="browser-default custom-select" [name]="select.name" [(ngModel)]="model[select.name]" id="inputTank">
-                  <option [value]="item._id" *ngFor="let item of select.values">{{item.serial}}</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <input type="submit" value="send">
-        </form>
-      </mdb-card-body>
-    </mdb-card>
-  </div>
+    <div class="col-sm-12 col-md-6 mb-md-0">
+        <app-blockquote [title]="object.title"></app-blockquote>
+        <mdb-card borderColor="border-light">
+            <mdb-card-body>
+                <button type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <!-- Form grid -->
+                <form #forma="ngForm" ngNativeValidate autocomplete="off" (ngSubmit)="send(forma)">
+                    <!-- Grid row -->
+                    <div class="form-row">
+                        <!-- Grid column -->
+                        <div class="col-md-12" *ngFor="let attrib of object.inputs">
+                            <!-- Material input -->
+                            <div class="md-form form-group">
+                                <input mdbInput mdbValidate [type]="attrib.type" class="form-control" [name]="attrib.name" [(ngModel)]="model[attrib.name]" id="inputDocument" [placeholder]="attrib.name | titlecase">
+                                <label for="inputDocument">{{attrib.name | titlecase}}</label>
+                            </div>
+                        </div>
+                        <div class="col-md-12" *ngIf="object.select">
+                            <div class="md-form form-group" *ngFor="let select of selects">
+                                <p class="text-muted" style="font-size: small">{{select.name | titlecase}}</p>
+                                <select class="browser-default custom-select" [name]="select.name" [(ngModel)]="model[select.name]" id="inputTank">
+                                  <option [value]="item._id" *ngFor="let item of select.values">{{item.serial}}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <input type="submit" class="btn btn-success" value="Actualizar">
+                </form>
+            </mdb-card-body>
+        </mdb-card>
+    </div>
 </div>

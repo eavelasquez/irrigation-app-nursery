@@ -10,7 +10,8 @@ import { CardComponent } from './card/card.component';
 import { ModalComponent } from './modal/modal.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { AlertComponent } from './alert/alert.component';
-import { BlockquoteComponent } from './blockquote/blockquote.component';
+import { BlockquoteComponent } from './blockquote/blockquote.component'
+import { IrrigationLineComponent } from './irrigation-line/irrigation-line.component';
 import { CardFormComponent } from './card-form/card-form.component';
 
 @NgModule({
@@ -22,6 +23,7 @@ import { CardFormComponent } from './card-form/card-form.component';
     CarouselComponent,
     AlertComponent,
     BlockquoteComponent,
+    IrrigationLineComponent,
     CardFormComponent
   ],
   exports: [
@@ -32,6 +34,7 @@ import { CardFormComponent } from './card-form/card-form.component';
     CarouselComponent,
     AlertComponent,
     BlockquoteComponent,
+    IrrigationLineComponent,
     CardFormComponent
   ],
   imports: [

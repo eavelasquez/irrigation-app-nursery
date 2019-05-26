@@ -1,62 +1,65 @@
 <div class="container mt-5">
-  <div class="row">
-    <div class="col-md-8">
-      <!-- Card -->
-      <mdb-card>
-        <mdb-card-body class="mt-2 mb-2">
-        <!--Card content-->
-          <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-            <!-- Carousel -->
-            <app-carousel></app-carousel>
-          </div>
-          <a>
-            <div class="mask"></div>
-          </a>
-          <blockquote class="blockquote mb-0 mt-2">
-            <div class="flex-row">
-              <a href="#" mdbBtn color="orange" class="float-right m-3" size="sm" mdbWavesEffect><mdb-icon fas icon="eye" class="mr-1"></mdb-icon>Ver vivero</a>
-            </div>
-            <footer class="blockquote-footer">Una frase interesante <cite title="Source Title">Slogan</cite></footer>
-          </blockquote>
-        </mdb-card-body>
-      </mdb-card>
-      <!-- Card -->
-    </div>
-
-    <div class="col-md-4">
-      <mdb-card>
-        <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-          <mdb-card-img src="assets/img/leaf.jpg" alt="Card image cap"></mdb-card-img>
-          <a><div class="mask"></div></a>
+    <div class="row">
+        <div class="col-md-8">
+            <!-- Card -->
+            <mdb-card>
+                <mdb-card-body class="mt-2 mb-2">
+                    <!--Card content-->
+                    <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+                        <!-- Carousel -->
+                        <app-carousel></app-carousel>
+                    </div>
+                    <a>
+                        <div class="mask"></div>
+                    </a>
+                    <blockquote class="blockquote mb-0 mt-2">
+                        <div class="flex-row">
+                            <a mdbBtn color="orange" class="float-right m-3" size="sm" [routerLink]="['/home']" mdbWavesEffect>
+                                <mdb-icon fas icon="eye" class="mr-1"></mdb-icon>Ver vivero</a>
+                        </div>
+                        <footer class="blockquote-footer">Una frase interesante <cite title="Source Title">Slogan</cite></footer>
+                    </blockquote>
+                </mdb-card-body>
+            </mdb-card>
+            <!-- Card -->
         </div>
-        <mdb-card-body>
-          <mdb-card-title>
-            <h4 class="text-center text-uppercase green-text">{{ title }}</h4>
-          </mdb-card-title>
-          <mdb-card-text>
-            <form ngNativeValidate (ngSubmit)="login()" [formGroup]="validateForm" autocomplete="off">
-              <div class="md-form">
-                <i class="fas fa-user prefix"></i>
-                <input mdbInput mdbValidate formControlName="documentFormEx" type="text" class="form-control" id="form1">
-                <label for="form1">Documento</label>
-                <mdb-error *ngIf="documentFormEx.invalid && (documentFormEx.dirty || documentFormEx.touched)">Campo inválido</mdb-error>
-                <mdb-success *ngIf="documentFormEx.valid && (documentFormEx.dirty || documentFormEx.touched)">Campo válido</mdb-success>
-              </div>
 
-              <div class="md-form">
-                <i class="fa fa-lock prefix"></i>
-                <input mdbInput mdbValidate formControlName="passwordFormEx" type="password" class="form-control" id="form2">
-                <label for="form2">Contraseña</label>
-                <mdb-error *ngIf="passwordFormEx.invalid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo inválido
-                </mdb-error>
-                <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo válido
-                </mdb-success>
-                <button mdbBtn type="submit" color="light-green" block="true" mdbWavesEffect>Ingresar</button>
-              </div>
-            </form>
-          </mdb-card-text>
-        </mdb-card-body>
-      </mdb-card>
+        <div class="col-md-4">
+            <mdb-card>
+                <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+                    <mdb-card-img src="assets/img/leaf.jpg" alt="Card image cap"></mdb-card-img>
+                    <a>
+                        <div class="mask"></div>
+                    </a>
+                </div>
+                <mdb-card-body>
+                    <mdb-card-title>
+                        <h4 class="text-center text-uppercase green-text">{{ title }}</h4>
+                    </mdb-card-title>
+                    <mdb-card-text>
+                        <form ngNativeValidate (ngSubmit)="login()" [formGroup]="validateForm" autocomplete="off">
+                            <div class="md-form">
+                                <i class="fas fa-user prefix"></i>
+                                <input mdbInput mdbValidate formControlName="documentFormEx" type="text" class="form-control" id="form1">
+                                <label for="form1">Documento</label>
+                                <mdb-error *ngIf="documentFormEx.invalid && (documentFormEx.dirty || documentFormEx.touched)">Campo inválido</mdb-error>
+                                <mdb-success *ngIf="documentFormEx.valid && (documentFormEx.dirty || documentFormEx.touched)">Campo válido</mdb-success>
+                            </div>
+
+                            <div class="md-form">
+                                <i class="fa fa-lock prefix"></i>
+                                <input mdbInput mdbValidate formControlName="passwordFormEx" type="password" class="form-control" id="form2">
+                                <label for="form2">Contraseña</label>
+                                <mdb-error *ngIf="passwordFormEx.invalid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo inválido
+                                </mdb-error>
+                                <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo válido
+                                </mdb-success>
+                                <button mdbBtn type="submit" color="light-green" block="true" mdbWavesEffect>Ingresar</button>
+                            </div>
+                        </form>
+                    </mdb-card-text>
+                </mdb-card-body>
+            </mdb-card>
+        </div>
     </div>
-  </div>
 </div>
