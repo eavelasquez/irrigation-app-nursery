@@ -13,7 +13,7 @@ const pagesRoutes: Routes = [
     component: PagesComponent,
     children: [
       { path: 'home', component: HomeComponent, data: { title: 'Inicio' } },
-      { path: 'configuration', component: ConfigurationComponent, data: { title: 'Configuración' } },
+      { path: 'configuration/:object', component: ConfigurationComponent, data: { title: 'Configuración' } },
       { path: 'adduser', component: AddUserComponent, data: { title: 'Agregar usuario' } },
       { path: 'edituser/:CC', component: EditUserComponent, data: { title: 'Editar usuario' } },
       { path: '', redirectTo: '/login', pathMatch: 'full' }

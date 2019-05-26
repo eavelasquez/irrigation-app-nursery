@@ -11,7 +11,7 @@ export class NotLoginGuard implements CanActivate {
   constructor( public userService: UserService, public router: Router) {}
 
   canActivate() {
-      if ( this.userService.token.length > 0 ) {
+      if ( this.userService.Authorization.length > 0 ) {
         // @ts-ignored
         swal('Ya está autenticado.', { buttons: false, timer: 1600 });
         this.router.navigate(['/home']);

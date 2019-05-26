@@ -10,8 +10,9 @@ import { CardComponent } from './card/card.component';
 import { ModalComponent } from './modal/modal.component';
 import { CarouselComponent } from './carousel/carousel.component';
 import { AlertComponent } from './alert/alert.component';
-import { BlockquoteComponent } from './blockquote/blockquote.component';
+import { BlockquoteComponent } from './blockquote/blockquote.component'
 import { IrrigationLineComponent } from './irrigation-line/irrigation-line.component';
+import { CardFormComponent } from './card-form/card-form.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { IrrigationLineComponent } from './irrigation-line/irrigation-line.compo
     CarouselComponent,
     AlertComponent,
     BlockquoteComponent,
-    IrrigationLineComponent
+    IrrigationLineComponent,
+    CardFormComponent
   ],
   exports: [
     HeaderComponent,
@@ -32,7 +34,8 @@ import { IrrigationLineComponent } from './irrigation-line/irrigation-line.compo
     CarouselComponent,
     AlertComponent,
     BlockquoteComponent,
-    IrrigationLineComponent
+    IrrigationLineComponent,
+    CardFormComponent
   ],
   imports: [
     CommonModule,

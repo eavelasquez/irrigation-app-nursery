@@ -3,27 +3,9 @@
     <div class="col-sm-12 col-md-9 ">
         <!--Contenido de líneas de riego-->
         <div class="row">
-            <div class="col-4">
+            <div class="col-4" *ngFor="let i of [1, 1, 1]; let j = index">
                 <h5 class="text-center">
-                    <mdb-badge color="orange">Línea de riego<span class="badge ml-2">1</span></mdb-badge>
-                </h5>
-                <div class="text-center">
-                    <button type="button" class="btn btn-cyan px-3 mb-2 btn-block"><i class="fas animated fa-tint flash infinite mr-2" aria-hidden="true"></i>Riego</button>
-                    <app-irrigation-line></app-irrigation-line>
-                </div>
-            </div>
-            <div class="col-4">
-                <h5 class="text-center">
-                    <mdb-badge color="orange">Línea de riego<span class="badge ml-2">2</span></mdb-badge>
-                </h5>
-                <div class="text-center">
-                    <button type="button" class="btn btn-cyan px-3 mb-2 btn-block"><i class="fas animated fa-tint flash infinite mr-2" aria-hidden="true"></i>Riego</button>
-                    <app-irrigation-line></app-irrigation-line>
-                </div>
-            </div>
-            <div class="col-4">
-                <h5 class="text-center">
-                    <mdb-badge color="orange">Línea de riego<span class="badge ml-2">3</span></mdb-badge>
+                    <mdb-badge color="orange">Línea de riego<span class="badge ml-2">{{ j }}</span></mdb-badge>
                 </h5>
                 <div class="text-center">
                     <button type="button" class="btn btn-cyan px-3 mb-2 btn-block"><i class="fas animated fa-tint flash infinite mr-2" aria-hidden="true"></i>Riego</button>
