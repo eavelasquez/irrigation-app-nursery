@@ -23,9 +23,7 @@ export class SocketService {
     });
 
     socket.on('measurement', (data) => {
-      // this.myEmitter.emit('ggggggg');
                         console.log(data);
-
     });
   }
 
