@@ -21,6 +21,12 @@ export class SocketService {
       // emiter.emit('caho');
       console.log('Disconnected');
     });
+
+    socket.on('measurement', (data) => {
+      // this.myEmitter.emit('ggggggg');
+                        console.log(data);
+
+    });
   }
 
   switchLine(line, status: boolean) {
