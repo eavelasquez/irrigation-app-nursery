@@ -1,6 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { IrrigationLineComponent } from './irrigation-line.component';
+import { IrrigationLineComponent } from "./IrrigationLineComponent";
 
 describe('IrrigationLineComponent', () => {
   let component: IrrigationLineComponent;

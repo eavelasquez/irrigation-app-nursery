@@ -8,6 +8,7 @@ export class SocketService {
   currentDocument = this.socket.fromEvent<Document>('document');
   documents = this.socket.fromEvent<string[]>('documents');
   myEmitter = new EventEmitter();
+  systemInfo: { bateria: { value }, tanque: { value }, lineas: Array<{ id: string, sensores: Array<{ id, value }>, humedad: number, estado: boolean }> };
 
   constructor(private socket: Socket) {
     socket.on('connect', () => {
@@ -18,12 +19,14 @@ export class SocketService {
 
     socket.on('disconnect', function () {
       // const emiter = this.myEmitter;
-      // emiter.emit('caho');
       console.log('Disconnected');
     });
 
-    socket.on('measurement', (data) => {
-                        console.log(data);
+// tslint:disable-next-line: max-line-length
+    socket.on('measurement', (data: { bateria: { value }, tanque: { value }, lineas: Array<{ id: string, sensores: Array<{ id, value }>, humedad: number, estado: boolean }> }) => {
+      console.log('data :', data.lineas);
+      this.systemInfo = data;
+      this.myEmitter.emit(this.systemInfo);
     });
   }
 

@@ -12,16 +12,15 @@ import {container} from '@angular/core/src/render3';
 export class HomeComponent implements OnInit {
   modalRef: MDBModalRef;
 
-  lines = {
-    one: {status: false, number: 1},
-    two: {status: false, number: 2},
-    tree: {status: false, number: 3},
-  };
+
+  systemInfo: { bateria: { value }, tanque: { value }, lineas: Array<{ id: string, sensores: Array<{ id, value }>, humedad: number, estado: boolean }> };
 
   constructor(private modalService: MDBModalService, private socketService: SocketService) {
+    this.socketService.myEmitter.subscribe(info => this.systemInfo = info);
   }
 
   ngOnInit() {
+    // this.switchLine();
   }
 
   // Interface
@@ -61,13 +60,13 @@ export class HomeComponent implements OnInit {
     });
   }
 
-  switchLine(line, status) {
+  switchLine(systemInfo, status) {
     status = !status;
-    for (const i in this.lines) {
-      if (this.lines[i].number === line) {
-        this.lines[i].status = status;
+    for (const i in this.systemInfo) {
+      if (this.systemInfo[i].number === systemInfo) {
+        this.systemInfo[i].status = status;
       }
     }
-    this.socketService.switchLine(line, status);
+    this.socketService.switchLine(systemInfo, status);
   }
 }

@@ -11,12 +11,12 @@
   <mdb-card-body>
     <!--Title-->
     <mdb-card-title>
-      <h5>{{ titulo }} <mdb-badge default="true">Estado</mdb-badge></h5>
+      <h5>{{ titulo }} <mdb-badge default="true"></mdb-badge></h5>
     </mdb-card-title>
     <!--Text-->
     <mdb-card-text>
       <div class="progress">
-        <div class="progress-bar green" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">25 %</div>
+        <div class="progress-bar green" role="progressbar" [style]="percent" aria-valuenow="'Info.value'" aria-valuemin="0" aria-valuemax="100">{{ Info.value * 100 }} %</div>
       </div>
     </mdb-card-text>
   </mdb-card-body>
