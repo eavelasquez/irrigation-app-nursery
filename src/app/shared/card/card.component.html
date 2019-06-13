@@ -1,24 +1,26 @@
 <!-- Card -->
 <mdb-card>
-  <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-    <!-- Card img -->
-    <mdb-card-img [src]="img" alt="Card image cap"></mdb-card-img>
-    <a>
-      <div class="mask"></div>
-    </a>
-  </div>
-  <!--Card content-->
-  <mdb-card-body>
-    <!--Title-->
-    <mdb-card-title>
-      <h5>{{ titulo }} <mdb-badge default="true"></mdb-badge></h5>
-    </mdb-card-title>
-    <!--Text-->
-    <mdb-card-text>
-      <div class="progress">
-        <div class="progress-bar green" role="progressbar" [style]="percent" aria-valuenow="'Info.value'" aria-valuemin="0" aria-valuemax="100">{{ Info.value}} %</div>
-      </div>
-    </mdb-card-text>
-  </mdb-card-body>
+    <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+        <!-- Card img -->
+        <mdb-card-img [src]="img" alt="Card image cap"></mdb-card-img>
+        <a>
+            <div class="mask"></div>
+        </a>
+    </div>
+    <!--Card content-->
+    <mdb-card-body>
+        <!--Title-->
+        <mdb-card-title>
+            <h5>{{ titulo }}
+                <mdb-badge default="true">Estado</mdb-badge>
+            </h5>
+        </mdb-card-title>
+        <!--Text-->
+        <mdb-card-text>
+            <div class="progress">
+                <div class="progress-bar green" role="progressbar" [style]="percent" aria-valuenow="'Info.value'" aria-valuemin="0" aria-valuemax="100">{{ Info.value}} %</div>
+            </div>
+        </mdb-card-text>
+    </mdb-card-body>
 </mdb-card>
 <!-- Card -->

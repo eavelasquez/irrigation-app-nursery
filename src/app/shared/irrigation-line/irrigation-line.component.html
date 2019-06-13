@@ -1,26 +1,27 @@
 <div class="card-group">
-  <!-- Card -->
-  <mdb-card>
-    <div class="view rgba-white-slight waves-light" mdbWavesEffect>
-      <!-- Card img -->
-      <mdb-card-img src="assets/img/irrigation.png" class="img-fluid" alt="Card image cap"></mdb-card-img>
-      <a>
-        <div class="mask"></div>
-      </a>
-    </div>
-    <!--Card content-->
-    <mdb-card-body>
-      <!--Text-->
-      <mdb-card-text>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item">Plantas.</li>
-          <li class="list-group-item">Riego<span
-            class="badge badge-warning">{{this.estado}}</span></li>
-          <li class="list-group-item">Humedad promedio. <span
-            class="badge badge-warning">{{ (InfoLinea.humedad / 100) | percent:'1.2' }}</span></li>
-        </ul>
-      </mdb-card-text>
-    </mdb-card-body>
-  </mdb-card>
+    <!-- Card -->
+    <mdb-card>
+        <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+            <!-- Card img -->
+            <mdb-card-img src="assets/img/irrigation.png" class="img-fluid" alt="Card image cap"></mdb-card-img>
+            <a>
+                <div class="mask"></div>
+            </a>
+        </div>
+        <!--Card content-->
+        <mdb-card-body>
+            <!--Text-->
+            <mdb-card-text>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Riego
+                        <span class="badge badge-success h4" [ngClass]="{'badge-warning': !this.estado}">{{ this.estado }}</span>
+                    </li>
+                    <li class="list-group-item">Humedad promedio.
+                        <span class="badge badge-warning">{{ InfoLinea.humedad / 100 | percent:'1.2' }}</span>
+                    </li>
+                </ul>
+            </mdb-card-text>
+        </mdb-card-body>
+    </mdb-card>
 </div>
 <!-- Card -->
