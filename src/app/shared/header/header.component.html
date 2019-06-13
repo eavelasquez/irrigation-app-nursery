@@ -5,11 +5,10 @@
     <div class="sidebar-fixed position-fixed">
 
         <a class="waves-effect">
-            <img alt="" class="img-fluid round shadow" src="assets/img/leaf.jpg">
+            <img alt="" class="img-fluid rounded-circle z-depth-1" src="assets/img/leaf.jpg">
         </a>
 
         <div class="list-group list-group-flush">
-
             <a [routerLink]="['/adduser']" routerLinkActive="active light-green border-0" class="list-group-item list-group-item-action waves-effect">
                 <mdb-icon fas icon="users-cog" class="mr-3"></mdb-icon>Administrador
             </a>
@@ -27,7 +26,7 @@
     <mdb-navbar [containerInside]="false" SideClass="navbar navbar-expand-lg navbar-light white">
         <!--Navbar brand-->
         <logo class="ml-2">
-            <a class="navbar-brand green-text text-uppercase" [routerLink]="['/home']">Vivero CTGI</a>
+            <a class="navbar-brand green-text text-uppercase font-weight-bolder ml-4" [routerLink]="['/home']">Vivero CTGI</a>
         </logo>
     </mdb-navbar>
     <!--/.Navbar-->

@@ -13,13 +13,14 @@ export class UserService {
   user: User;
   Authorization: string;
 
-  constructor( public http: HttpClient, public router: Router ) { this.loadStorage(); }
+  constructor(public http: HttpClient, public router: Router) {
+    this.loadStorage();
+  }
 
 // Authentication
   loginUser( user: AuthUser ) {
-    console.log(user);
     const url = URL_SERVICES + '/usuario/login';
-    return this.http.post( url, user ).pipe( map((response: any) => {
+    return this.http.post(url, user).pipe( map((response: any) => {
       this.saveStorage(response.usuario._id, response.Authorization, response.usuario);
     }));
   }
@@ -35,7 +36,7 @@ export class UserService {
     return (this.Authorization.length > 5);
   }
 
-// Request HTTP - CRUD
+  // Request HTTP - CRUD
   postUser( user: User ) {
     const url = URL_SERVICES + '/usuario';
     const headers = new HttpHeaders({
@@ -78,7 +79,7 @@ export class UserService {
     return this.http.delete(url, { headers });
   }
 
-// Functions - LocalStorage
+  // Functions - LocalStorage
   saveStorage(id: string, Authorization: string, user: User) {
     localStorage.setItem('id', id);
     localStorage.setItem('Authorization', Authorization);

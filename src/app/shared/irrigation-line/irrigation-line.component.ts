@@ -1,4 +1,6 @@
 import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-irrigation-line',
@@ -7,9 +9,10 @@ import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core'
 })
 export class IrrigationLineComponent implements OnInit, OnChanges {
   @Input() InfoLinea;
-  estado = 'ss';
-
-  constructor() {
+  estado = '';
+  img: string;
+  modalRef: MDBModalRef;
+  constructor(private modalService: MDBModalService) {
     // console.log(this.InfoLinea);
   }
 
@@ -19,6 +22,13 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.InfoLinea);
     this.estado = this.InfoLinea.estado ? 'Encendida' : 'Apagada';
+    setTimeout(() => {
+      this.img = this.estado ? 'assets/img/irrigation.png' : 'assets/img/irrigation_1.png';
+    }, 6000)
+  }
+
+  openModal() {
+    this.modalRef = this.modalService.show(ModalComponent)
   }
 
 }

@@ -7,11 +7,11 @@ import { AuthUser } from '../models/user.model';
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styles: ['']
 })
 export class LoginComponent implements OnInit {
 
-  title = 'Vivero';
+  title = 'Vivero CTGI';
   validateForm: FormGroup;
 
   constructor(public fb: FormBuilder, public router: Router, public userService: UserService) {
@@ -29,12 +29,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     if ( this.validateForm.invalid ) { return; }
-    console.log(this.validateForm.value);
-    console.log('Formulario válido: ' + this.validateForm.valid);
+    console.log('Formulario válido: ' + this.validateForm.value);
     const user = new AuthUser (
       this.validateForm.value.documentFormEx,
       this.validateForm.value.passwordFormEx
     );
-    this.userService.loginUser(user).subscribe( () => this.router.navigate(['home']));
+    this.userService.loginUser(user).subscribe( () => this.router.navigate(['/home']));
   }
 }

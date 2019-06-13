@@ -1,9 +1,9 @@
 <div class="card-group">
     <!-- Card -->
     <mdb-card>
-        <div class="view rgba-white-slight waves-light" mdbWavesEffect>
+        <div class="view rgba-white-slight waves-light" (click)="openModal()" mdbWavesEffect>
             <!-- Card img -->
-            <mdb-card-img src="assets/img/irrigation.png" class="img-fluid" alt="Card image cap"></mdb-card-img>
+            <mdb-card-img [src]="img" class="img-fluid" alt="Card image cap"></mdb-card-img>
             <a>
                 <div class="mask"></div>
             </a>
@@ -17,7 +17,12 @@
                         <span class="badge badge-success h4" [ngClass]="{'badge-warning': !this.estado}">{{ this.estado }}</span>
                     </li>
                     <li class="list-group-item">Humedad promedio.
-                        <span class="badge badge-warning">{{ InfoLinea.humedad / 100 | percent:'1.2' }}</span>
+                        <span class="h4 badge badge-warning">{{ InfoLinea.humedad / 100 | percent:'1.2' }}</span>
+                    </li>
+                    <li class="list-group-item">
+                        <button mdbBtn type="submit" color="light-green" (click)="openModal()" mdbWavesEffect>
+                            <mdb-icon fas icon="eye" size="sm"></mdb-icon>
+                        </button>
                     </li>
                 </ul>
             </mdb-card-text>
