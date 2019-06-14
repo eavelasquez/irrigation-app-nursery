@@ -27,8 +27,8 @@ export class AddUserComponent implements OnInit, AfterViewInit {
     this.loading = false;
     this.validateForm = fb.group({
       documentFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern('^[0-9]*$') ] ),
-      nameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z]+$') ] ),
-      surnameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z]+$') ] ),
+      nameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z ]+$') ] ),
+      surnameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z ]+$') ] ),
       emailFormEx: new FormControl(null, [Validators.minLength(12), Validators.maxLength(36), Validators.email ] ),
       passwordFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
       passwordConfirmFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)])
@@ -57,6 +57,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   }
 
   addUser() {
+    console.log(this.validateForm);
     if ( this.validateForm.invalid ) { return; }
     console.log(this.validateForm.value);
     console.log( 'Formulario válido: ' + this.validateForm.valid);

@@ -1,156 +1,176 @@
 <div class="row">
-  <div class="col-sm-12 col-md-6 mb-md-0">
-    <app-blockquote [title]="'Registrar un usuario'"></app-blockquote>
-    <!-- Material form register -->
-    <mdb-card borderColor="border-light">
-      <mdb-card-body>
-        <button (click)="clearForm()" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
-        <!-- Form grid -->
-        <form ngNativeValidate [formGroup]="validateForm" (ngSubmit)="addUser()" autocomplete="off">
-          <!-- Grid row -->
-          <div class="form-row">
-            <!-- Grid column -->
-            <div class="col-md-12">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="documentFormEx" type="text" class="form-control" id="inputDocument" placeholder="Documento">
-                <label for="inputDocument">Documento</label>
-                <mdb-error *ngIf="documentFormEx.invalid && (documentFormEx.dirty || documentFormEx.touched)">Campo inválido
-                </mdb-error>
-                <mdb-success *ngIf="documentFormEx.valid && (documentFormEx.dirty || documentFormEx.touched)">Campo válido
-                </mdb-success>
-              </div>
-            </div>
-            <!-- Grid column -->
+    <div class="col-sm-12 col-md-6 mb-md-0">
+        <app-blockquote [title]="'Registrar un usuario'"></app-blockquote>
+        <!-- Material form register -->
+        <mdb-card borderColor="border-light">
+            <mdb-card-body>
+                <button (click)="clearForm()" type="button" class="close" aria-label="Close"><span aria-hidden="true">×</span></button>
+                <!-- Form grid -->
+                <form ngNativeValidate [formGroup]="validateForm" (ngSubmit)="addUser()" autocomplete="off">
+                    <!-- Grid row -->
+                    <div class="form-row">
+                        <!-- Grid column -->
+                        <div class="col-md-12">
+                            <!-- Material input -->
+                            <div class="md-form form-group">
+                                <input mdbInput mdbValidate formControlName="documentFormEx" type="text" class="form-control" id="inputDocument" placeholder="Documento">
+                                <label for="inputDocument">Documento</label>
+                                <mdb-error *ngIf="documentFormEx.invalid && (documentFormEx.dirty || documentFormEx.touched)">
+                                    <span *ngIf="documentFormEx.errors.required"> - Campo obligatorio</span>
+                                    <span *ngIf="documentFormEx.errors.pattern"> - Solo números</span>
+                                    <span *ngIf="documentFormEx.errors.maxlength"> - Máximo diez números</span>
+                                    <span *ngIf="documentFormEx.errors.minlength"> - Mínimo ocho números</span>
+                                </mdb-error>
+                                <mdb-success *ngIf="documentFormEx.valid && (documentFormEx.dirty || documentFormEx.touched)">
+                                </mdb-success>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
 
-            <!-- Grid column -->
-            <div class="col-md-6">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="nameFormEx" type="text" class="form-control" id="inputName" placeholder="Nombre">
-                <label for="inputName">Nombre</label>
-                <mdb-error *ngIf="nameFormEx.invalid && (nameFormEx.dirty || nameFormEx.touched)">Campo inválido
-                </mdb-error>
-                <mdb-success *ngIf="nameFormEx.valid && (nameFormEx.dirty || nameFormEx.touched)">Campo válido
-                </mdb-success>
-              </div>
-            </div>
-            <!-- Grid column -->
+                        <!-- Grid column -->
+                        <div class="col-md-6">
+                            <!-- Material input -->
+                            <div class="md-form form-group">
+                                <input mdbInput mdbValidate formControlName="nameFormEx" type="text" class="form-control" id="inputName" placeholder="Nombre">
+                                <label for="inputName">Nombre</label>
+                                <mdb-error *ngIf="nameFormEx.invalid && (nameFormEx.dirty || nameFormEx.touched)">
+                                    <span *ngIf="nameFormEx.errors.required"> - Campo obligatorio</span>
+                                    <span *ngIf="nameFormEx.errors.pattern"> - Solo caracteres</span>
+                                    <span *ngIf="nameFormEx.errors.maxlength"> - Máximo dieciséis números</span>
+                                    <span *ngIf="nameFormEx.errors.minlength"> - Mínimo tres números</span>
+                                </mdb-error>
+                                <mdb-success *ngIf="nameFormEx.valid && (nameFormEx.dirty || nameFormEx.touched)">
+                                </mdb-success>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
 
-            <!-- Grid column -->
-            <div class="col-md-6">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="surnameFormEx" type="text" class="form-control" id="inputSurname" placeholder="Apellido">
-                <label for="inputSurname">Apellido</label>
-                <mdb-error *ngIf="surnameFormEx.invalid && (surnameFormEx.dirty || surnameFormEx.touched)">Campo inválido
-                </mdb-error>
-                <mdb-success *ngIf="surnameFormEx.valid && (surnameFormEx.dirty || surnameFormEx.touched)">Campo válido
-                </mdb-success>
-              </div>
-            </div>
-            <!-- Grid column -->
-          </div>
-          <!-- Grid row -->
+                        <!-- Grid column -->
+                        <div class="col-md-6">
+                            <!-- Material input -->
+                            <div class="md-form form-group">
+                                <input mdbInput mdbValidate formControlName="surnameFormEx" type="text" class="form-control" id="inputSurname" placeholder="Apellido">
+                                <label for="inputSurname">Apellido</label>
+                                <mdb-error *ngIf="surnameFormEx.invalid && (surnameFormEx.dirty || surnameFormEx.touched)">
+                                    <span *ngIf="surnameFormEx.errors.required"> - Campo obligatorio</span>
+                                    <span *ngIf="surnameFormEx.errors.pattern"> - Solo caracteres</span>
+                                    <span *ngIf="surnameFormEx.errors.maxlength"> - Máximo dieciséis números</span>
+                                    <span *ngIf="surnameFormEx.errors.minlength"> - Mínimo tres números</span>
+                                </mdb-error>
+                                <mdb-success *ngIf="surnameFormEx.valid && (surnameFormEx.dirty || surnameFormEx.touched)">
+                                </mdb-success>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
 
-          <!-- Grid row -->
-          <div class="form-row">
-            <!-- Grid column -->
-            <div class="col-md-12">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="emailFormEx" type="email" class="form-control" id="inputEmail" placeholder="Correo electrónico" aria-describedby="materialRegisterFormEmail">
-                <label for="inputEmail">Correo electrónico</label>
-                <small id="materialRegisterFormEmail" class="form-text text-muted text-center">
-                  Opcional
-                </small>
-                <mdb-error *ngIf="emailFormEx.invalid && (emailFormEx.dirty || emailFormEx.touched)">Campo inválido
-                </mdb-error>
-                <mdb-success *ngIf="emailFormEx.valid && (emailFormEx.dirty || emailFormEx.touched)">Campo válido
-                </mdb-success>
-              </div>
-            </div>
-            <!-- Grid column -->
-          </div>
-          <!-- Grid row -->
+                    <!-- Grid row -->
+                    <div class="form-row">
+                        <!-- Grid column -->
+                        <div class="col-md-12">
+                            <!-- Material input -->
+                            <div class="md-form form-group">
+                                <input mdbInput mdbValidate formControlName="emailFormEx" type="email" class="form-control" id="inputEmail" placeholder="Correo electrónico" aria-describedby="formEmail">
+                                <label for="inputEmail">Correo electrónico</label>
+                                <small id="materialRegisterFormEmail" class="form-text text-muted text-center">Opcional</small>
+                                <mdb-error *ngIf="emailFormEx.invalid && (emailFormEx.dirty || emailFormEx.touched)">
+                                    <span *ngIf="surnameFormEx.errors.email"> - No es un correo electrónico</span>
+                                    <span *ngIf="surnameFormEx.errors.maxlength"> - Máximo treinta y seis caracteres</span>
+                                    <span *ngIf="surnameFormEx.errors.minlength"> - Mínimo doce caracteres</span>
+                                </mdb-error>
+                                <mdb-success *ngIf="emailFormEx.valid && (emailFormEx.dirty || emailFormEx.touched)">
+                                </mdb-success>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
 
-          <!-- Grid row -->
-          <div class="row">
-            <!-- Grid column -->
-            <div class="col-md-6">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="passwordFormEx" type="password" class="form-control" id="inputPassword1" placeholder="Contraseña" aria-describedby="materialRegisterFormPassword">
-                <label for="inputPassword1">Contraseña</label>
-                <mdb-error *ngIf="passwordFormEx.invalid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo inválido
-                </mdb-error>
-                <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">Campo válido
-                </mdb-success>
-              </div>
-            </div>
-            <!-- Grid column -->
+                    <!-- Grid row -->
+                    <div class="row">
+                        <!-- Grid column -->
+                        <div class="col-md-6">
+                            <!-- Material input -->
+                            <div class="md-form form-group">
+                                <input mdbInput mdbValidate formControlName="passwordFormEx" type="password" class="form-control" id="inputPassword1" placeholder="Contraseña" aria-describedby="materialRegisterFormPassword">
+                                <label for="inputPassword1">Contraseña</label>
+                                <mdb-error *ngIf="passwordFormEx.invalid && (passwordFormEx.dirty || passwordFormEx.touched)">
+                                    <span *ngIf="passwordFormEx.errors.required"> - Campo obligatorio</span>
+                                    <span *ngIf="passwordFormEx.errors.maxlength"> - Máximo dieciséis números</span>
+                                    <span *ngIf="passwordFormEx.errors.minlength"> - Mínimo ocho números</span>
+                                </mdb-error>
+                                <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">
+                                </mdb-success>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
 
-            <!-- Grid column -->
-            <div class="col-md-6">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="passwordConfirmFormEx" type="password" class="form-control" id="inputPassword2" placeholder="Confirmar contraseña">
-                <label for="inputPassword2">Confirmar contraseña</label>
-                <mdb-error *ngIf="passwordConfirmFormEx.invalid && (passwordConfirmFormEx.dirty || passwordConfirmFormEx.touched)">Campo inválido
-                </mdb-error>
-                <mdb-success *ngIf="passwordConfirmFormEx.valid && (passwordConfirmFormEx.dirty || passwordConfirmFormEx.touched)">Campo válido
-                </mdb-success>
-              </div>
-            </div>
-            <!-- Grid column -->
-          </div>
-          <!-- Grid row -->
-          <button mdbBtn type="submit" color="light-green" class="float-right" mdbWavesEffect>
-            <mdb-icon fas icon="save" class="mr-1"></mdb-icon>
-            Crear usuario
-          </button>
-        </form>
-        <!-- Form grid -->
-      </mdb-card-body>
-    </mdb-card>
-    <!-- Material form register -->
-  </div>
+                        <!-- Grid column -->
+                        <div class="col-md-6">
+                            <!-- Material input -->
+                            <div class="md-form form-group">
+                                <input mdbInput mdbValidate formControlName="passwordConfirmFormEx" type="password" class="form-control" id="inputPassword2" placeholder="Confirmar contraseña">
+                                <label for="inputPassword2">Confirmar contraseña</label>
+                                <mdb-error *ngIf="passwordConfirmFormEx.invalid && (passwordConfirmFormEx.dirty || passwordConfirmFormEx.touched)">
+                                    <span *ngIf="passwordConfirmFormEx.errors.required"> - Campo obligatorio</span>
+                                    <span *ngIf="passwordConfirmFormEx.errors.maxlength"> - Máximo dieciséis números</span>
+                                    <span *ngIf="passwordConfirmFormEx.errors.minlength"> - Mínimo ocho números</span>
+                                </mdb-error>
+                                <mdb-success *ngIf="passwordConfirmFormEx.valid && (passwordConfirmFormEx.dirty || passwordConfirmFormEx.touched)">
+                                </mdb-success>
+                            </div>
+                        </div>
+                        <!-- Grid column -->
+                    </div>
+                    <!-- Grid row -->
+                    <button mdbBtn type="submit" color="light-green" class="float-right" mdbWavesEffect>
+                      <mdb-icon fas icon="save" class="mr-1"></mdb-icon>
+                      Crear usuario
+                    </button>
+                </form>
+                <!-- Form grid -->
+            </mdb-card-body>
+        </mdb-card>
+        <!-- Material form register -->
+    </div>
 
-  <div class="col-sm-12 col-md-6 mb-md-0">
-    <app-blockquote [title]="'Lista de usuarios'"></app-blockquote>
+    <div class="col-sm-12 col-md-6 mb-md-0">
+        <app-blockquote [title]="'Lista de usuarios'"></app-blockquote>
 
-    <app-alert *ngIf="loading"></app-alert>
+        <app-alert *ngIf="loading"></app-alert>
 
-    <mdb-card borderColor="border-light">
-      <mdb-card-header class="text-center"><li class="fas fa-user mr-2"></li><mdb-badge default="true">{{ users.length }}</mdb-badge></mdb-card-header>
-      <table mdbTable small="true">
-        <thead>
-          <tr class="font-italic font-weight-normal">
-            <th *ngFor="let element of elements" scope="col">{{ element }}</th>
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody *ngIf="!loading">
-          <tr *ngFor="let user of users; let i = index">
-            <th *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">{{ user.CC }}</th>
-            <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{ user.nombre }} {{ user.apellido }}</td>
-            <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
-              <button (click)="updateUser(user)" type="button" mdbBtn color="default" size="sm" class="m-0 mr-1 p-1" mdbWavesEffect><mdb-icon fas icon="edit"></mdb-icon></button>
-              <button (click)="deleteUser(user)" type="button" mdbBtn color="danger" size="sm" class="m-0 ml-1 p-1" mdbWavesEffect><mdb-icon fas icon="trash"></mdb-icon></button>
-            </td>
-          </tr>
-        </tbody>
-        <tfoot class="grey lighten-5 w-100">
-          <tr>
-            <td class="colspan">
-              <mdb-table-pagination [searchDataSource]="users" (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)"></mdb-table-pagination>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </mdb-card>
-    <hr class="my-4">
-
-  </div>
+        <mdb-card borderColor="border-light">
+            <mdb-card-header class="text-center">
+                <li class="fas fa-user mr-2"></li>
+                <mdb-badge success="true">{{ users.length }}</mdb-badge>
+            </mdb-card-header>
+            <table mdbTable small="true">
+                <thead>
+                    <tr class="font-italic font-weight-normal">
+                        <th *ngFor="let element of elements" scope="col">{{ element }}</th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody *ngIf="!loading">
+                    <tr *ngFor="let user of users; let i = index">
+                        <th *ngIf="i+1 >= firstItemIndex && i < lastItemIndex" scope="row">{{ user.CC }}</th>
+                        <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">{{ user.nombre }} {{ user.apellido }}</td>
+                        <td *ngIf="i+1 >= firstItemIndex && i < lastItemIndex">
+                            <button (click)="updateUser(user)" type="button" mdbBtn color="default" size="sm" class="m-0 mr-1 p-1" mdbWavesEffect><mdb-icon fas icon="edit"></mdb-icon></button>
+                            <button (click)="deleteUser(user)" type="button" mdbBtn color="danger" size="sm" class="m-0 ml-1 p-1" mdbWavesEffect><mdb-icon fas icon="trash"></mdb-icon></button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot class="grey lighten-5 w-100">
+                    <tr>
+                        <td class="colspan">
+                            <mdb-table-pagination [searchDataSource]="users" (nextPageClick)="onNextPageClick($event)" (previousPageClick)="onPreviousPageClick($event)"></mdb-table-pagination>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </mdb-card>
+        <hr class="my-4">
+    </div>
 </div>
-
