@@ -22,9 +22,6 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     console.log(this.InfoLinea);
     this.estado = this.InfoLinea.estado ? 'Encendida' : 'Apagada';
-    setTimeout(() => {
-      this.img = this.estado ? 'assets/img/irrigation.png' : 'assets/img/irrigation_1.png';
-    }, 6000)
   }
 
   openModal() {

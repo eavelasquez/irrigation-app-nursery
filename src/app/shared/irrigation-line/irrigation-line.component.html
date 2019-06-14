@@ -3,7 +3,7 @@
     <mdb-card>
         <div class="view rgba-white-slight waves-light" (click)="openModal()" mdbWavesEffect>
             <!-- Card img -->
-            <mdb-card-img [src]="img" class="img-fluid" alt="Card image cap"></mdb-card-img>
+            <mdb-card-img src="assets/img/irrigation.png" [ngClass]="{'infinite': !this.estado}" class="img-fluid" alt="Card image cap"></mdb-card-img>
             <a>
                 <div class="mask"></div>
             </a>
