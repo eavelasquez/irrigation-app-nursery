@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, OnInit, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { MdbTablePaginationComponent, MdbTableService } from 'angular-bootstrap-md';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators, AbstractControl } from '@angular/forms';
 import swal from 'sweetalert';
 import { UserService } from '../../services/service.index';
 import { User } from '../../models/user.model';
@@ -12,29 +12,34 @@ import { Router } from '@angular/router';
   styleUrls: ['./add-user.component.scss']
 })
 export class AddUserComponent implements OnInit, AfterViewInit {
+  // Instance for pagination the users
   @ViewChild(MdbTablePaginationComponent) mdbTablePagination: MdbTablePaginationComponent;
 
-  validateForm: FormGroup;
-  users: User[] = [];
-  previous: User[] = [];
-  elements = ['Documento', 'Nombre completo'];
-  loading: boolean;
-  firstItemIndex;
-  lastItemIndex;
+  public validateForm: FormGroup;
+  public users: User[] = [];
+  public previous: User[] = [];
+  public elements = ['Documento', 'Nombre completo'];
+  public loading: boolean;
+  public firstItemIndex;
+  public lastItemIndex;
 
-  constructor( public fb: FormBuilder, public userService: UserService,
-              public tableService: MdbTableService, private cdRef: ChangeDetectorRef, public router: Router ) {
+  // Services need injected in the constructor
+  constructor(public fb: FormBuilder, public userService: UserService,
+              public tableService: MdbTableService, private cdRef: ChangeDetectorRef, public router: Router) {
     this.loading = false;
+
+    // Form reactive with her controls - Fields validated
     this.validateForm = fb.group({
-      documentFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern('^[0-9]*$') ] ),
-      nameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z ]+$') ] ),
-      surnameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z ]+$') ] ),
-      emailFormEx: new FormControl(null, [Validators.minLength(12), Validators.maxLength(36), Validators.email ] ),
-      passwordFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
-      passwordConfirmFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)])
-    }, { validators: this.equals('passwordFormEx', 'passwordConfirmFormEx') } );
+      documentFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]),
+      nameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z ]+$')]),
+      surnameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z ]+$')]),
+      emailFormEx: new FormControl(null, [Validators.minLength(12), Validators.maxLength(36), Validators.email]),
+      passwordFormEx: new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
+      passwordConfirmFormEx: new FormControl(null)
+    });
   }
 
+  // These getters provides easy access to the fields
   get documentFormEx() { return this.validateForm.get('documentFormEx'); }
   get nameFormEx() { return this.validateForm.get('nameFormEx'); }
   get surnameFormEx() { return this.validateForm.get('surnameFormEx'); }
@@ -42,11 +47,15 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   get passwordFormEx() { return this.validateForm.get('passwordFormEx'); }
   get passwordConfirmFormEx() { return this.validateForm.get('passwordConfirmFormEx'); }
 
+  // A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
   ngOnInit() {
     this.loadUsers();
+    this.passwordConfirmFormEx.setValidators([Validators.required, Validators.minLength(8), Validators.maxLength(16), this.equalsPassword.bind(this)]);
   }
 
+  // A lifecycle hook that is called after Angular has fully initialized a component's view.
   ngAfterViewInit() {
+    // Definition the pagination using instance MdbTablePaginationComponent
     this.mdbTablePagination.setMaxVisibleItemsNumberTo(7);
     this.firstItemIndex = this.mdbTablePagination.firstItemIndex;
     this.lastItemIndex = this.mdbTablePagination.lastItemIndex;
@@ -56,39 +65,41 @@ export class AddUserComponent implements OnInit, AfterViewInit {
     this.cdRef.detectChanges();
   }
 
-  addUser() {
-    console.log(this.validateForm);
+  // Event of user register - The submit event is emitted by the form tag using the native DOM event.
+  onSubmit() {
     if ( this.validateForm.invalid ) { return; }
-    console.log(this.validateForm.value);
-    console.log( 'Formulario válido: ' + this.validateForm.valid);
     this.loading = true;
+    // Create user object  for send post
     const user = new User(
       this.validateForm.value.documentFormEx,
       this.validateForm.value.nameFormEx,
       this.validateForm.value.surnameFormEx,
       this.validateForm.value.passwordFormEx
     );
-    this.userService.postUser(user).subscribe( response => {
+    console.log(this.validateForm.value);
+    // User service for sending request post
+    this.userService.postUser(user).subscribe(response => {
       console.log(response);
       this.loading = false;
       this.loadUsers();
       this.clearForm();
-      // @ts-ignore
-      swal({ title: 'Registro completo', text: 'Ahora este usuario tiene acceso al vivero.', icon: 'success', buttons: false, timer: 2400 });
+      // @ts-ignore - Generate alert of register complete
+      swal({title: 'Registro completo', text: 'Ahora este usuario tiene acceso al vivero.', icon: 'success', buttons: false, timer: 2400});
     });
   }
 
-  updateUser( user: User ) {
+  // Redirect for update a user using his document
+  updateUser(user: User) {
     this.router.navigate(['/edituser', user.CC]);
   }
 
-  deleteUser( user: User ) {
-    if ( user.CC === this.userService.user.CC ) {
-      // @ts-ignore
+  deleteUser(user: User) {
+    if (user.CC === this.userService.user.CC) {
+      // @ts-ignore - Generate alert of delete invalid, you can not erase yourself
       swal('No se puede eliminar este usuario', 'Inválido borrarse a sí mismo.', 'warning', { buttons: false, timer: 2000 });
-      return;
+      return ;
     }
-    // @ts-ignore
+    // @ts-ignore - Generate alert if confirm delete user
     swal({
       title: '¿Está seguro?',
       text: `Eliminará al usuario ${user.nombre}`,
@@ -97,6 +108,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
       dangerMode: true
     }).then( willDelete => {
       if (willDelete) {
+        // User service for sending request delete
         this.userService.deleteUser(user.CC).subscribe( response => {
           console.log(response);
           swal('Usuario eliminado', `El usuario ${user.nombre} ha sido eliminado`, {
@@ -114,7 +126,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
           this.loadUsers();
         });
       } else {
-        // @ts-ignore
+        // @ts-ignore - Generate alert if canceled delete user
         swal( 'El usuario sigue siendo seguro', {
           buttons: {
             confirm: {
@@ -131,8 +143,10 @@ export class AddUserComponent implements OnInit, AfterViewInit {
     });
   }
 
+  // Load users function
   loadUsers() {
     this.loading = true;
+    // User service for sending request get
     this.userService.getUser().subscribe( (data: any) => {
       this.users = data.result;
       this.tableService.setDataSource(this.users);
@@ -142,25 +156,28 @@ export class AddUserComponent implements OnInit, AfterViewInit {
     });
   }
 
-  equals( fieldOne: string, fieldTwo: string ) {
-    return (formGroup: FormGroup) => {
-      const dataOne = formGroup.controls[fieldOne].value;
-      const dataTwo = formGroup.controls[fieldTwo].value;
-
-      if ( dataOne === dataTwo ) { return null; }
-      return { equals: true };
-    };
+  // Validation of passwords equals
+  equalsPassword(control: AbstractControl) {
+    const fieldOne = control.value;
+    const fieldTwo = this.passwordConfirmFormEx.value;
+    if (fieldOne === fieldTwo) {
+      return null;
+    }
+    return { equals: true };
   }
 
+  // Clean function, to clear fields
   clearForm() {
     this.validateForm.reset();
   }
 
+  // Next function, to see more results - Pagination
   onNextPageClick(data: any) {
     this.firstItemIndex = data.first;
     this.lastItemIndex = data.last;
   }
 
+  // Previous function, to see results previous
   onPreviousPageClick(data: any) {
     this.firstItemIndex = data.first;
     this.lastItemIndex = data.last;

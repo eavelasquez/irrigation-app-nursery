@@ -11,6 +11,7 @@ const pagesRoutes: Routes = [
   {
     path: '',
     component: PagesComponent,
+    // canActivate: [LoginGuard],
     children: [
       { path: 'home', component: HomeComponent, data: { title: 'Inicio' } },
       { path: 'configuration/:object', component: ConfigurationComponent, data: { title: 'Configuración' } },
