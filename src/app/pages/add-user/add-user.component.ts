@@ -9,7 +9,14 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-add-user',
   templateUrl: './add-user.component.html',
-  styleUrls: ['./add-user.component.scss']
+  styles: [`
+    .md-v-line {
+      position: absolute;
+      border-left: 1px solid rgba(0,0,0,.125);
+      height: 50px;
+      top: 0;
+      left: 120px;
+    }`]
 })
 export class AddUserComponent implements OnInit, AfterViewInit {
   // Instance for pagination the users
@@ -47,7 +54,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   get passwordFormEx() { return this.validateForm.get('passwordFormEx'); }
   get passwordConfirmFormEx() { return this.validateForm.get('passwordConfirmFormEx'); }
 
-  // A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive.
+  // A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive
   ngOnInit() {
     this.loadUsers();
     this.passwordConfirmFormEx.setValidators([Validators.required, Validators.minLength(8), Validators.maxLength(16), this.equalsPassword.bind(this)]);
@@ -65,9 +72,9 @@ export class AddUserComponent implements OnInit, AfterViewInit {
     this.cdRef.detectChanges();
   }
 
-  // Event of user register - The submit event is emitted by the form tag using the native DOM event.
+  // Event of user create - The submit event is emitted by the form tag using the native DOM event
   onSubmit() {
-    if ( this.validateForm.invalid ) { return; }
+    if (this.validateForm.invalid) { return; }
     this.loading = true;
     // Create user object  for send post
     const user = new User(
@@ -83,7 +90,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
       this.loading = false;
       this.loadUsers();
       this.clearForm();
-      // @ts-ignore - Generate alert of register complete
+      // @ts-ignore - Generate alert of create user complete
       swal({title: 'Registro completo', text: 'Ahora este usuario tiene acceso al vivero.', icon: 'success', buttons: false, timer: 2400});
     });
   }
@@ -93,6 +100,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
     this.router.navigate(['/edituser', user.CC]);
   }
 
+  // Event of user delete - This function delete a user using his document, also has confirmation alerts to remove user
   deleteUser(user: User) {
     if (user.CC === this.userService.user.CC) {
       // @ts-ignore - Generate alert of delete invalid, you can not erase yourself
@@ -106,10 +114,10 @@ export class AddUserComponent implements OnInit, AfterViewInit {
       icon: 'warning',
       buttons: ['Cancelar', 'Aceptar'],
       dangerMode: true
-    }).then( willDelete => {
+    }).then(willDelete => {
       if (willDelete) {
         // User service for sending request delete
-        this.userService.deleteUser(user.CC).subscribe( response => {
+        this.userService.deleteUser(user.CC).subscribe(response => {
           console.log(response);
           swal('Usuario eliminado', `El usuario ${user.nombre} ha sido eliminado`, {
             icon: 'success',
@@ -127,7 +135,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
         });
       } else {
         // @ts-ignore - Generate alert if canceled delete user
-        swal( 'El usuario sigue siendo seguro', {
+        swal('El usuario sigue siendo seguro', {
           buttons: {
             confirm: {
               text: 'Aceptar',
@@ -147,7 +155,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   loadUsers() {
     this.loading = true;
     // User service for sending request get
-    this.userService.getUser().subscribe( (data: any) => {
+    this.userService.getUser().subscribe((data: any) => {
       this.users = data.result;
       this.tableService.setDataSource(this.users);
       this.users = this.tableService.getDataSource();

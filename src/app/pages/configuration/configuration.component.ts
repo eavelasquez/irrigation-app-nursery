@@ -1,17 +1,17 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormGroup, NgForm} from '@angular/forms';
-import {ActivatedRoute} from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { FormGroup, NgForm } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import * as fields from '../../config/configFields';
-import {Configuration} from '../../interfaces/configuration';
-import {DropdownService} from '../../services/dropdown.service';
-import {map} from 'rxjs/operators';
-import {ConfigurationService} from '../../services/configuration.service';
+import { Configuration } from '../../interfaces/configuration';
+import { DropdownService } from '../../services/dropdown.service';
+import { map } from 'rxjs/operators';
+import { ConfigurationService } from '../../services/configuration.service';
 
 
 @Component({
   selector: 'app-configuration',
   templateUrl: './configuration.component.html',
-  styleUrls: ['./configuration.component.scss']
+  styles: [``]
 })
 export class ConfigurationComponent implements OnInit {
   objectParam;

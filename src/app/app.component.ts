@@ -1,6 +1,4 @@
-import {Component} from '@angular/core';
-import {SocketService} from './services/socket.service';
-
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +6,7 @@ import {SocketService} from './services/socket.service';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  constructor(private socketService: SocketService){}
+  constructor() {}
 
-  title = 'app';
+  title = 'RiegoApp';
 }

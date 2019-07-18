@@ -14,7 +14,7 @@ const pagesRoutes: Routes = [
     // canActivate: [LoginGuard],
     children: [
       { path: 'home', component: HomeComponent, data: { title: 'Inicio' } },
-      { path: 'configuration/:object', component: ConfigurationComponent, data: { title: 'Configuración' } },
+      // { path: 'configuration/:object', component: ConfigurationComponent, data: { title: 'Configuración' } },
       { path: 'adduser', component: AddUserComponent, data: { title: 'Agregar usuario' } },
       { path: 'edituser/:CC', component: EditUserComponent, data: { title: 'Editar usuario' } },
       { path: '', redirectTo: '/login', pathMatch: 'full' }
@@ -22,4 +22,4 @@ const pagesRoutes: Routes = [
   }
 ];
 
-export const PAGES_ROUTES = RouterModule.forChild( pagesRoutes );
+export const PAGES_ROUTES = RouterModule.forChild(pagesRoutes);

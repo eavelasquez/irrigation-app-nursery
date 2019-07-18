@@ -25,6 +25,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     HomeComponent,
     ConfigurationComponent,
     AddUserComponent,
+    EditUserComponent,
     SharedModule,
     HttpClientModule
   ],
