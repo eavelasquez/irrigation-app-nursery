@@ -84,7 +84,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
       this.validateForm.value.passwordFormEx
     );
     console.log(this.validateForm.value);
-    // User service for sending request post
+    // User service for sending post request
     this.userService.postUser(user).subscribe(response => {
       console.log(response);
       this.loading = false;
@@ -116,7 +116,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
       dangerMode: true
     }).then(willDelete => {
       if (willDelete) {
-        // User service for sending request delete
+        // User service for sending delete request
         this.userService.deleteUser(user.CC).subscribe(response => {
           console.log(response);
           swal('Usuario eliminado', `El usuario ${user.nombre} ha sido eliminado`, {
@@ -154,7 +154,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   // Load users function
   loadUsers() {
     this.loading = true;
-    // User service for sending request get
+    // User service for sending get request
     this.userService.getUser().subscribe((data: any) => {
       this.users = data.result;
       this.tableService.setDataSource(this.users);

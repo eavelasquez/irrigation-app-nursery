@@ -65,7 +65,7 @@ export class EditUserComponent implements OnInit {
       this.validateForm.value.nameFormEx,
       this.validateForm.value.surnameFormEx
     );
-    // User service for sending request update
+    // User service for sending update request
     this.userService.putUser(user).subscribe(response => {
       console.log(response);
       this.clearForm();

@@ -8,7 +8,6 @@ import { HttpClientModule } from '@angular/common/http';
 import { PAGES_ROUTES } from './pages.routes';
 
 import { HomeComponent } from './home/home.component';
-import { ConfigurationComponent } from './configuration/configuration.component';
 import { AddUserComponent } from './add-user/add-user.component';
 import { PagesComponent } from './pages.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
@@ -16,14 +15,12 @@ import { EditUserComponent } from './edit-user/edit-user.component';
 @NgModule({
   declarations: [
     HomeComponent,
-    ConfigurationComponent,
     AddUserComponent,
     PagesComponent,
     EditUserComponent
   ],
   exports: [
     HomeComponent,
-    ConfigurationComponent,
     AddUserComponent,
     EditUserComponent,
     SharedModule,

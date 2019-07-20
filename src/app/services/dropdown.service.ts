@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {URL_SERVICES} from '../config/config';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,6 +11,6 @@ export class DropdownService {
   }
 
   getData(entity: string) {
-    return this.http.get(`${URL_SERVICES}/${entity}`);
+    return this.http.get(`${environment.URL_SERVICES}/${entity}`);
   }
 }

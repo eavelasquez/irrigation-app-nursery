@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CollapseService, UserService } from '../../services/service.index';
+import { UserService } from '../../services/service.index';
 
 @Component({
   selector: 'app-header',
@@ -8,7 +8,7 @@ import { CollapseService, UserService } from '../../services/service.index';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(public collapseService: CollapseService, private userService: UserService) {}
+  constructor(private userService: UserService) {}
 
   ngOnInit() {
   }

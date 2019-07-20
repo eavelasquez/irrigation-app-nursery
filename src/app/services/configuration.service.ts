@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
-import {URL_SERVICES} from '../config/config';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -11,10 +11,10 @@ export class ConfigurationService {
   }
 
   register(url: string, data) {
-    return this.http.post(`${URL_SERVICES}${url}`, data);
+    return this.http.post(`${environment.URL_SERVICES}${url}`, data);
   }
 
   show(url: string) {
-    return this.http.get(`${URL_SERVICES}${url}`);
+    return this.http.get(`${environment.URL_SERVICES}${url}`);
   }
 }

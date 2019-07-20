@@ -11,11 +11,10 @@ import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { PagesModule } from './pages/pages.module';
-import { PipesModule } from './pipes/pipes.module';
 // URL API Rest
-import { URL_SERVICES } from './config/config';
+import { environment } from '../environments/environment';
 
-const configSocket: SocketIoConfig = { url: URL_SERVICES, options: {} };
+const configSocket: SocketIoConfig = { url: environment.URL_SERVICES, options: {} };
 
 @NgModule({
   declarations: [
@@ -30,7 +29,6 @@ const configSocket: SocketIoConfig = { url: URL_SERVICES, options: {} };
     ReactiveFormsModule,
     PagesModule,
     APP_ROUTES,
-    PipesModule,
     SocketIoModule.forRoot(configSocket),
   ],
   providers: [],

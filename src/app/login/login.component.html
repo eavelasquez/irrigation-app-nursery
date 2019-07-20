@@ -21,21 +21,27 @@
                 </mdb-card-body>
             </mdb-card>
         </div>
-
+        <!-- Login -->
         <div class="col-md-4">
+            <!-- Material form login -->
             <mdb-card>
+                <!-- Logo -->
                 <div class="view rgba-white-slight waves-light rounded-circle" mdbWavesEffect>
                     <mdb-card-img src="assets/img/leaf.jpg" alt="logo"></mdb-card-img>
                     <a>
                         <div class="mask"></div>
                     </a>
                 </div>
+                <!-- Logo -->
+
+                <!-- Form reactive - Fields validation with error messages -->
                 <mdb-card-body>
                     <mdb-card-title>
                         <h4 class="text-center text-uppercase green-text">{{ title }}</h4>
                     </mdb-card-title>
                     <mdb-card-text>
-                        <form ngNativeValidate (ngSubmit)="login()" [formGroup]="validateForm" autocomplete="off">
+                        <form ngNativeValidate (ngSubmit)="onSubmit()" [formGroup]="validateForm" autocomplete="off">
+                            <!-- Material input - Document -->
                             <div class="md-form">
                                 <i class="fas fa-user prefix"></i>
                                 <input mdbInput mdbValidate formControlName="documentFormEx" color="light-green" type="text" class="form-control" id="document">
@@ -48,7 +54,9 @@
                                 </mdb-error>
                                 <mdb-success *ngIf="documentFormEx.valid && (documentFormEx.dirty || documentFormEx.touched)"></mdb-success>
                             </div>
+                            <!-- Material input - Document -->
 
+                            <!-- Material input - Password -->
                             <div class="md-form">
                                 <i class="fa fa-lock prefix"></i>
                                 <input mdbInput mdbValidate formControlName="passwordFormEx" type="password" class="form-control" id="password">
@@ -62,10 +70,14 @@
                                 </mdb-success>
                                 <button mdbBtn type="submit" color="light-green" block="true" mdbWavesEffect>iniciar sesión</button>
                             </div>
+                            <!-- Material input - Password -->
                         </form>
                     </mdb-card-text>
                 </mdb-card-body>
+                <!-- Form reactive - Fields validation with error messages -->
             </mdb-card>
+            <!-- Material form login -->
         </div>
+        <!-- Login -->
     </div>
 </div>

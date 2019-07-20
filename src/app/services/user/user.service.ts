@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import {AuthUser, UpdateUser, User} from '../../models/user.model';
-import { URL_SERVICES } from '../../config/config';
+import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
 
@@ -19,7 +19,7 @@ export class UserService {
 
 // Authentication
   loginUser( user: AuthUser ) {
-    const url = URL_SERVICES + '/usuario/login';
+    const url = environment.URL_SERVICES + '/usuario/login';
     return this.http.post(url, user).pipe( map((response: any) => {
       this.saveStorage(response.usuario._id, response.Authorization, response.usuario);
     }));
@@ -38,7 +38,7 @@ export class UserService {
 
   // Request HTTP - CRUD
   postUser( user: User ) {
-    const url = URL_SERVICES + '/usuario';
+    const url = environment.URL_SERVICES + '/usuario';
     const headers = new HttpHeaders({
       'Authorization': localStorage.getItem('Authorization')
     });
@@ -46,7 +46,7 @@ export class UserService {
   }
 
   getUser() {
-    const url = URL_SERVICES + '/usuario';
+    const url = environment.URL_SERVICES + '/usuario';
     const headers = new HttpHeaders({
       'Authorization': localStorage.getItem('Authorization')
     });
@@ -54,7 +54,7 @@ export class UserService {
   }
 
   findUser( CC: string ) {
-    const url = URL_SERVICES + '/usuario/' + CC;
+    const url = environment.URL_SERVICES + '/usuario/' + CC;
     const headers = new HttpHeaders({
       'Authorization': localStorage.getItem('Authorization')
     });
@@ -64,7 +64,7 @@ export class UserService {
   }
 
   putUser( user: UpdateUser ) {
-    const url = URL_SERVICES + '/usuario/';
+    const url = environment.URL_SERVICES + '/usuario/';
     const headers = new HttpHeaders({
       'Authorization': localStorage.getItem('Authorization')
     });
@@ -72,7 +72,7 @@ export class UserService {
   }
 
   deleteUser( CC: string ) {
-    const url = URL_SERVICES + '/usuario/' + CC;
+    const url = environment.URL_SERVICES + '/usuario/' + CC;
     const headers = new HttpHeaders({
       'Authorization': localStorage.getItem('Authorization')
     });
