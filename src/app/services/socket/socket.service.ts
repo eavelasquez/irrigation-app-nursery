@@ -1,5 +1,6 @@
 import {EventEmitter, Injectable} from '@angular/core';
 import {Socket} from 'ngx-socket-io';
+import { SystemInfo } from '../../models/system-info.model';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,7 @@ export class SocketService {
   currentDocument = this.socket.fromEvent<Document>('document');
   documents = this.socket.fromEvent<string[]>('documents');
   myEmitter = new EventEmitter();
-  systemInfo: { bateria: { value }, tanque: { value }, lineas: Array<{ id: string, sensores: Array<{ id, value }>, humedad: number, estado: boolean }> };
+  systemInfo: SystemInfo;
 
   constructor(private socket: Socket) {
     socket.on('connect', () => {
@@ -22,8 +23,7 @@ export class SocketService {
       console.log('Disconnected');
     });
 
-// tslint:disable-next-line: max-line-length
-    socket.on('measurement', (data: { bateria: { value }, tanque: { value }, lineas: Array<{ id: string, sensores: Array<{ id, value }>, humedad: number, estado: boolean }> }) => {
+    socket.on('measurement', (data: SystemInfo) => {
       console.log('data :', data.lineas);
       this.systemInfo = data;
       this.myEmitter.emit(this.systemInfo);
