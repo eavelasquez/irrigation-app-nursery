@@ -44,7 +44,7 @@ export class EditUserComponent implements OnInit {
 
   // Load user function using his document
   loadUser( CC: string ) {
-    this.userService.findUser(CC).subscribe( response => {
+    this.userService.getUser(CC).subscribe( response => {
       this.user = response;
       console.log(response);
     });

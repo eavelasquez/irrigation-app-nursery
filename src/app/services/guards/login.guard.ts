@@ -8,14 +8,15 @@ import swal from 'sweetalert';
 })
 export class LoginGuard implements CanActivate {
 
-  constructor( public userService: UserService, public router: Router) {}
+  // Services need injected in the constructor
+  constructor(public userService: UserService, public router: Router) {}
 
+  // Interface that a class can implement to be a guard deciding if a route can be activated
   canActivate() {
-    if ( this.userService.authLogin() ) {
-      console.log('Pasó por guard');
+    if (this.userService.authLogin()) {
       return true;
     } else {
-      console.log('Bloqueado por guard');
+      console.log('Bloqueado por guard.');
       // @ts-ignored
       swal('Debe estar autenticado.', { buttons: false, timer: 1600 });
       this.router.navigate(['/login']);

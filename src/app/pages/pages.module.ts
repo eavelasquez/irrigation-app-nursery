@@ -23,8 +23,7 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     HomeComponent,
     AddUserComponent,
     EditUserComponent,
-    SharedModule,
-    HttpClientModule
+    SharedModule
   ],
   imports: [
     CommonModule,
@@ -32,7 +31,8 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     PAGES_ROUTES,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ]
 })
 export class PagesModule { }

@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
-import { UserService } from '../services/service.index';
-import { AuthUser } from '../models/user.model';
+import { UserService } from '../../services/service.index';
+import { AuthUser } from '../../models/user.model';
 
 @Component({
   selector: 'app-login',
@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
 
   // Event of user authenticated - The submit event is emitted by the form tag using the native DOM event
   onSubmit() {
-    if ( this.validateForm.invalid ) { return; }
+    if (this.validateForm.invalid) { return; }
     console.log('Formulario válido: ' + this.validateForm.value);
     // Create user object  for send post
     const user = new AuthUser (

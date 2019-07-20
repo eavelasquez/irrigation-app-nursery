@@ -9,7 +9,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { SocketIoModule, SocketIoConfig } from 'ngx-socket-io';
 // Components
 import { AppComponent } from './app.component';
-import { LoginComponent } from './login/login.component';
+import { LoginComponent } from './pages/login/login.component';
 import { PagesModule } from './pages/pages.module';
 // URL API Rest
 import { environment } from '../environments/environment';
@@ -29,10 +29,9 @@ const configSocket: SocketIoConfig = { url: environment.URL_SERVICES, options: {
     ReactiveFormsModule,
     PagesModule,
     APP_ROUTES,
-    SocketIoModule.forRoot(configSocket),
+    SocketIoModule.forRoot(configSocket)
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule {
-}
+export class AppModule { }

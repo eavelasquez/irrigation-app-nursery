@@ -1,12 +1,12 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { LoginComponent } from './login/login.component';
-import { NopagefoundComponent } from './shared/nopagefound/nopagefound.component';
+import { LoginComponent } from './pages/login/login.component';
+import { NotPageFoundComponent } from './shared/not-page-found/not-page-found.component';
 import { NotLoginGuard } from './services/service.index';
 
 const routes: Routes = [
   { path: 'login', component: LoginComponent },
-  { path: '**', component: NopagefoundComponent }
+  { path: '**', component: NotPageFoundComponent }
 ];
 
 export const APP_ROUTES = RouterModule.forRoot(routes, { useHash: true });

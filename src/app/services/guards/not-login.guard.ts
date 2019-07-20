@@ -8,10 +8,12 @@ import swal from 'sweetalert';
 })
 export class NotLoginGuard implements CanActivate {
 
-  constructor( public userService: UserService, public router: Router) {}
+  // Services need injected in the constructor
+  constructor(public userService: UserService, public router: Router) {}
 
+  // Interface that a class can implement to be a guard deciding if a route can be activated for token
   canActivate() {
-      if ( this.userService.Authorization.length > 0 ) {
+      if (this.userService.Authorization.length > 0) {
         // @ts-ignored
         swal('Ya está autenticado.', { buttons: false, timer: 1600 });
         this.router.navigate(['/home']);

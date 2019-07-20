@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SocketService } from '../../services/socket.service';
+import { SocketService } from '../../services/service.index';
 
 @Component({
   selector: 'app-home',

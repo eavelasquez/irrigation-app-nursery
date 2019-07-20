@@ -5,7 +5,7 @@ import { ModalComponent } from '../modal/modal.component';
 @Component({
   selector: 'app-irrigation-line',
   templateUrl: './irrigation-line.component.html',
-  styleUrls: ['./irrigation-line.component.scss']
+  styles: [``]
 })
 export class IrrigationLineComponent implements OnInit, OnChanges {
   @Input() InfoLinea;

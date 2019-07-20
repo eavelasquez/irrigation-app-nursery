@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
-
-import { LoginGuard, NotLoginGuard, UserService } from './service.index';
+// Providers
+import { LoginGuard, NotLoginGuard, UserService, SocketService } from './service.index';
 
 @NgModule({
   declarations: [],
@@ -13,7 +13,8 @@ import { LoginGuard, NotLoginGuard, UserService } from './service.index';
   providers: [
     UserService,
     LoginGuard,
-    NotLoginGuard
+    NotLoginGuard,
+    SocketService
   ]
 })
 export class ServiceModule { }

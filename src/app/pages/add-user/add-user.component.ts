@@ -76,7 +76,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   onSubmit() {
     if (this.validateForm.invalid) { return; }
     this.loading = true;
-    // Create user object  for send post
+    // Create user object for send post
     const user = new User(
       this.validateForm.value.documentFormEx,
       this.validateForm.value.nameFormEx,
@@ -155,7 +155,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   loadUsers() {
     this.loading = true;
     // User service for sending get request
-    this.userService.getUser().subscribe((data: any) => {
+    this.userService.getUsers().subscribe((data: any) => {
       this.users = data.result;
       this.tableService.setDataSource(this.users);
       this.users = this.tableService.getDataSource();
