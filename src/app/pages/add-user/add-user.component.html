@@ -73,11 +73,11 @@
                             <div class="md-form form-group">
                                 <input mdbInput mdbValidate formControlName="emailFormEx" type="email" class="form-control" id="inputEmail" placeholder="Correo electrónico" aria-describedby="formEmail">
                                 <label for="inputEmail">Correo electrónico</label>
-                                <small id="materialRegisterFormEmail" class="form-text text-muted text-center">Opcional</small>
+                                <small id="materialRegisterFormEmail" class="form-text text-muted text-center mt-3">Opcional</small>
                                 <mdb-error *ngIf="emailFormEx.invalid && (emailFormEx.dirty || emailFormEx.touched)">
-                                    <span *ngIf="surnameFormEx.errors.email"> - No es un correo electrónico</span>
-                                    <span *ngIf="surnameFormEx.errors.maxlength"> - Máximo treinta y seis caracteres</span>
-                                    <span *ngIf="surnameFormEx.errors.minlength"> - Mínimo doce caracteres</span>
+                                    <span *ngIf="emailFormEx.errors.email"> - No es un correo electrónico</span>
+                                    <span *ngIf="emailFormEx.errors.maxlength"> - Máximo treinta y seis caracteres</span>
+                                    <span *ngIf="emailFormEx.errors.minlength"> - Mínimo doce caracteres</span>
                                 </mdb-error>
                                 <mdb-success *ngIf="emailFormEx.valid && (emailFormEx.dirty || emailFormEx.touched)">
                                 </mdb-success>
@@ -116,7 +116,7 @@
                                     <span *ngIf="passwordConfirmFormEx.errors.required"> - Campo obligatorio</span>
                                     <span *ngIf="passwordConfirmFormEx.errors.maxlength"> - Máximo dieciséis números</span>
                                     <span *ngIf="passwordConfirmFormEx.errors.minlength"> - Mínimo ocho números</span>
-                                    <span *ngIf="passwordConfirmFormEx.errors.error"> - No coinciden ambas contraseñas</span>
+                                    <span *ngIf="passwordConfirmFormEx.errors.equals"> - No coinciden ambas contraseñas</span>
                                 </mdb-error>
                                 <mdb-success *ngIf="passwordConfirmFormEx.valid && (passwordConfirmFormEx.dirty || passwordConfirmFormEx.touched)">
                                 </mdb-success>
@@ -125,7 +125,7 @@
                         <!-- Grid column -->
                     </div>
                     <!-- Grid row -->
-                    <button mdbBtn type="submit" color="light-green" class="float-right" mdbWavesEffect>
+                    <button mdbBtn type="submit" color="light-green" class="float-right mt-3" mdbWavesEffect>
                       <mdb-icon fas icon="save" class="mr-1"></mdb-icon>
                       Crear usuario
                     </button>

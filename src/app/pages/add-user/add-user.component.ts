@@ -74,6 +74,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
 
   // Event of user create - The submit event is emitted by the form tag using the native DOM event
   onSubmit() {
+    console.log(this.validateForm);
     if (this.validateForm.invalid) { return; }
     this.loading = true;
     // Create user object for send post
@@ -167,7 +168,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   // Validation of passwords equals
   equalsPassword(control: AbstractControl) {
     const fieldOne = control.value;
-    const fieldTwo = this.passwordConfirmFormEx.value;
+    const fieldTwo = this.passwordFormEx.value;
     if (fieldOne === fieldTwo) {
       return null;
     }
