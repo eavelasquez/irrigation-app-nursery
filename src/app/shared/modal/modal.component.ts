@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { MDBModalRef } from 'angular-bootstrap-md';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-modal',
@@ -7,14 +8,16 @@ import { MDBModalRef } from 'angular-bootstrap-md';
   styles: [``]
 })
 export class ModalComponent implements OnInit {
-  content: object;
+  line: any;
   heading: string;
-  icon: string;
-
+  time = new FormControl(null);
   // Service created modal
   constructor(public modalRef: MDBModalRef) { }
 
   ngOnInit() {
   }
 
+  program() {
+    const time = this.time.value;
+  }
 }

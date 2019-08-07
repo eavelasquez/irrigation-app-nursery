@@ -16,6 +16,21 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
     // console.log(this.InfoLinea);
   }
 
+  modalOptions = {
+    backdrop: true,
+    keyboard: true,
+    focus: true,
+    show: false,
+    ignoreBackdropClick: false,
+    class: '',
+    containerClass: '',
+    animated: true,
+    data: {
+        heading: 'Modal heading',
+        content: { line: this.InfoLinea, heading: 'Línea de riego' }
+    }
+  };
+
   ngOnInit() {
   }
 
@@ -25,7 +40,7 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
   }
 
   openModal() {
-    this.modalRef = this.modalService.show(ModalComponent)
+    this.modalRef = this.modalService.show(ModalComponent, this.modalOptions);
   }
 
 }

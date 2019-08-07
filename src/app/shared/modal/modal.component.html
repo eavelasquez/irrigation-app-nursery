@@ -3,12 +3,26 @@
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">×</span>
     </button>
-    <h4 class="modal-title w-100" id="myModalLabel1">{{ heading }} <mdb-icon fas [icon]="icon"></mdb-icon></h4>
+    <h4 class="modal-title w-100" id="myModalLabel1">{{ heading }} {{line.id}}<mdb-icon fas>leaf</mdb-icon></h4>
   </div>
   <div class="modal-body">
-    <!--Contenido dinámico del modal-->
+    <ul class="list-group list-group-horizontal">
+      <li class="list-group-item">Sensores disponibles: {{ line.sensores.length }}</li>
+      <li class="list-group-item">
+        <!-- Default checked -->
+        <div class="custom-control custom-switch">
+          <input type="checkbox" class="custom-control-input">
+          <label class="custom-control-label" for="customSwitch1">Bloquear</label>
+        </div>
+      </li>
+    </ul>
+    <div class="md-form">
+      <input type="time" id="input" class="form-control" value="13:00" formControlName="time" mdbInput>
+      <label for="input">Horario de programación</label>
+    </div>
   </div>
   <div class="modal-footer">
     <button type="button" mdbBtn color="orange" class="relative waves-light" aria-label="Close" (click)="modalRef.hide()" mdbWavesEffect>Cerrar</button>
+    <button type="button" mdbBtn color="primary" class="relative waves-light" (click)="program()" mdbWavesEffect>Programar</button>
   </div>
 </div>
