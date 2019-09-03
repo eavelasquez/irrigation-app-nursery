@@ -7,7 +7,7 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class BlockquoteComponent implements OnInit {
 
-  @Input() title;
+  @Input() title: string;
   constructor() { }
 
   ngOnInit() {

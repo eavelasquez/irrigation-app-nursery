@@ -26,8 +26,8 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
     containerClass: '',
     animated: true,
     data: {
-        heading: 'Modal heading',
-        content: { line: this.InfoLinea, heading: 'Línea de riego' }
+        heading: 'Línea de riego',
+        content: { line: this.InfoLinea }
     }
   };
 
@@ -35,7 +35,6 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.InfoLinea);
     this.estado = this.InfoLinea.estado ? 'Encendida' : 'Apagada';
   }
 

@@ -1,7 +1,7 @@
 <div class="container mt-5">
     <div class="row">
         <div class="col-md-8">
-            <mdb-card>
+            <mdb-card class="p-2 my-2">
                 <mdb-card-body class="mt-2 mb-2">
                     <div class="view rgba-white-slight waves-light" mdbWavesEffect>
                         <!-- Carousel Component -->
@@ -44,7 +44,7 @@
                             <!-- Material input - Document -->
                             <div class="md-form">
                                 <i class="fas fa-user prefix"></i>
-                                <input mdbInput mdbValidate formControlName="documentFormEx" color="light-green" type="text" class="form-control" id="document">
+                                <input mdbInput mdbValidate formControlName="documentFormEx" type="text" class="form-control" id="document">
                                 <label for="document">Documento</label>
                                 <mdb-error *ngIf="documentFormEx.invalid && (documentFormEx.dirty || documentFormEx.touched)">
                                     <span *ngIf="documentFormEx.errors.required"> - Campo obligatorio</span>
@@ -68,8 +68,14 @@
                                 </mdb-error>
                                 <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">
                                 </mdb-success>
-                                <button mdbBtn type="submit" color="light-green" block="true" mdbWavesEffect>iniciar sesión</button>
                             </div>
+                            <div class="d-flex justify-content-around mt-0 mb-2">
+                                <div>
+                                  <!-- Remember me -->
+                                  <mdb-checkbox formControlName="rememberFormEx">Recuérdame</mdb-checkbox>
+                                </div>
+                            </div>
+                            <button mdbBtn type="submit" color="light-green" block="true" mdbWavesEffect>iniciar sesión</button>
                             <!-- Material input - Password -->
                         </form>
                     </mdb-card-text>

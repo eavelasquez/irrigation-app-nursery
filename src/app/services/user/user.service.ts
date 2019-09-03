@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import {AuthUser, UpdateUser, User} from '../../models/user.model';
+import { AuthUser, UpdateUser, User } from '../../models/user.model';
 import { environment } from '../../../environments/environment';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
@@ -20,7 +20,12 @@ export class UserService {
   }
 
 // Authentication
-  loginUser(user: AuthUser) {
+  loginUser(user: AuthUser, remember: boolean = false) {
+    if (remember) {
+      localStorage.setItem('CC', user.CC);
+    } else {
+      localStorage.removeItem('CC');
+    }
     const url = environment.URL_SERVICES + '/usuario/login';
     // Request post authentication, send credentials of user
     return this.http.post(url, user).pipe(map((response: any) => {

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MDBModalRef } from 'angular-bootstrap-md';
-import { FormControl, Validators } from '@angular/forms';
+import { FormControl } from '@angular/forms';
+import { SocketService } from '../../services/socket/socket.service';
 
 @Component({
   selector: 'app-modal',
@@ -8,16 +9,19 @@ import { FormControl, Validators } from '@angular/forms';
   styles: [``]
 })
 export class ModalComponent implements OnInit {
-  line: any;
+
+  content: any;
   heading: string;
-  time = new FormControl(null);
+  public time = new FormControl(null);
   // Service created modal
-  constructor(public modalRef: MDBModalRef) { }
+  constructor(public modalRef: MDBModalRef, private socketService: SocketService) { }
 
   ngOnInit() {
   }
 
   program() {
     const time = this.time.value;
+    const body = { line: this.content.line, time };
+    this.socketService.programLine(body).subscribe(value => console.log(value));
   }
 }

@@ -3,11 +3,11 @@
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">×</span>
     </button>
-    <h4 class="modal-title w-100" id="myModalLabel1">{{ heading }} {{line.id}}<mdb-icon fas>leaf</mdb-icon></h4>
+    <h4 class="modal-title w-100" id="myModalLabel1">{{ heading }} {{ content.line.id }}<mdb-icon fas>leaf</mdb-icon></h4>
   </div>
   <div class="modal-body">
     <ul class="list-group list-group-horizontal">
-      <li class="list-group-item">Sensores disponibles: {{ line.sensores.length }}</li>
+      <li class="list-group-item">Sensores disponibles: {{ content.line.sensores.length }}</li>
       <li class="list-group-item">
         <!-- Default checked -->
         <div class="custom-control custom-switch">
@@ -17,7 +17,7 @@
       </li>
     </ul>
     <div class="md-form">
-      <input type="time" id="input" class="form-control" value="13:00" formControlName="time" mdbInput>
+      <input type="time" id="input" class="form-control" formControlName="time" mdbInput>
       <label for="input">Horario de programación</label>
     </div>
   </div>

@@ -8,7 +8,7 @@ import { DomSanitizer, SafeStyle } from '@angular/platform-browser';
 })
 export class CardComponent implements OnInit, OnChanges {
   @Input() Info;
-  @Input() titulo: string;
+  @Input() title: string;
   @Input() img: string;
   percent: SafeStyle;
 
@@ -19,7 +19,6 @@ export class CardComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(this.Info);
     this.percent = this.sanitization.bypassSecurityTrustStyle(`width: ${this.Info.value} %`);
   }
 

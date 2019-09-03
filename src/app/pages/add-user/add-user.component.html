@@ -144,7 +144,7 @@
         <mdb-card borderColor="border-light">
             <mdb-card-header class="text-center">
                 <li class="fas fa-user mr-2"></li>
-                <mdb-badge success="true">{{ users.length }}</mdb-badge>
+                <mdb-badge success="true">{{ users.length || 0 }}</mdb-badge>
             </mdb-card-header>
             <!-- Table - List users -->
             <table mdbTable small="true">

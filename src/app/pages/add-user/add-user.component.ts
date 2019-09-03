@@ -74,7 +74,6 @@ export class AddUserComponent implements OnInit, AfterViewInit {
 
   // Event of user create - The submit event is emitted by the form tag using the native DOM event
   onSubmit() {
-    console.log(this.validateForm);
     if (this.validateForm.invalid) { return; }
     this.loading = true;
     // Create user object for send post
@@ -84,10 +83,8 @@ export class AddUserComponent implements OnInit, AfterViewInit {
       this.validateForm.value.surnameFormEx,
       this.validateForm.value.passwordFormEx
     );
-    console.log(this.validateForm.value);
     // User service for sending post request
     this.userService.postUser(user).subscribe(response => {
-      console.log(response);
       this.loading = false;
       this.loadUsers();
       this.clearForm();
@@ -119,7 +116,6 @@ export class AddUserComponent implements OnInit, AfterViewInit {
       if (willDelete) {
         // User service for sending delete request
         this.userService.deleteUser(user.CC).subscribe(response => {
-          console.log(response);
           swal('Usuario eliminado', `El usuario ${user.nombre} ha sido eliminado`, {
             icon: 'success',
             buttons: {
