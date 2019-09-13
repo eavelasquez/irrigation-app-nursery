@@ -12,7 +12,7 @@ export class ModalComponent implements OnInit {
 
   content: any;
   heading: string;
-  public time = new FormControl(null);
+  public time = new FormControl('01:00');
   // Service created modal
   constructor(public modalRef: MDBModalRef, private socketService: SocketService) { }
 

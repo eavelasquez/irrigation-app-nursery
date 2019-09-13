@@ -3,23 +3,17 @@
     <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
       <span aria-hidden="true">×</span>
     </button>
-    <h4 class="modal-title w-100" id="myModalLabel1">{{ heading }} {{ content.line.id }}<mdb-icon fas>leaf</mdb-icon></h4>
+    <h4 class="modal-title" id="myModalLabel1">{{ heading }}</h4>
   </div>
   <div class="modal-body">
-    <ul class="list-group list-group-horizontal">
-      <li class="list-group-item">Sensores disponibles: {{ content.line.sensores.length }}</li>
-      <li class="list-group-item">
-        <!-- Default checked -->
-        <div class="custom-control custom-switch">
-          <input type="checkbox" class="custom-control-input">
-          <label class="custom-control-label" for="customSwitch1">Bloquear</label>
-        </div>
-      </li>
-    </ul>
+    <label for="input">Horario de programación</label>
     <div class="md-form">
-      <input type="time" id="input" class="form-control" formControlName="time" mdbInput>
-      <label for="input">Horario de programación</label>
+      <input type="time" id="input" class="form-control" [formControl]="time" mdbInput>
     </div>
+    <div class="custom-control custom-switch">
+        <input type="checkbox" class="custom-control-input" id="customSwitch">
+        <label class="custom-control-label" for="customSwitch">Bloquear</label>
+      </div>
   </div>
   <div class="modal-footer">
     <button type="button" mdbBtn color="orange" class="relative waves-light" aria-label="Close" (click)="modalRef.hide()" mdbWavesEffect>Cerrar</button>

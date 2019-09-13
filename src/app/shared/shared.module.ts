@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 // Libraries
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 // Components
@@ -37,6 +38,7 @@ import { IrrigationLineComponent } from './irrigation-line/irrigation-line.compo
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule,
     MDBBootstrapModule.forRoot(),
   ],
   entryComponents: [

@@ -12,9 +12,7 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
   estado = '';
   img: string;
   modalRef: MDBModalRef;
-  constructor(private modalService: MDBModalService) {
-    // console.log(this.InfoLinea);
-  }
+  constructor(private modalService: MDBModalService) { }
 
   modalOptions = {
     backdrop: true,
@@ -26,8 +24,8 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
     containerClass: '',
     animated: true,
     data: {
-        heading: 'Línea de riego',
-        content: { line: this.InfoLinea }
+      heading: 'Línea de riego',
+      content: { line: this.InfoLinea }
     }
   };
 
