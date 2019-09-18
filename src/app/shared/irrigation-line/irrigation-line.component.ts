@@ -10,6 +10,8 @@ import { ModalComponent } from '../modal/modal.component';
 export class IrrigationLineComponent implements OnInit, OnChanges {
   @Input() InfoLinea;
   estado = '';
+  imagen: string;
+  color: string;
   img: string;
   modalRef: MDBModalRef;
   constructor(private modalService: MDBModalService) { }
@@ -34,6 +36,14 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.estado = this.InfoLinea.estado ? 'Encendida' : 'Apagada';
+
+    if (this.InfoLinea.estado){
+      this.imagen = ".png";  
+      this.color = "success"  
+   } else {
+      this.imagen = "_1.png"
+      this.color = "danger"
+    }    
   }
 
   openModal() {
