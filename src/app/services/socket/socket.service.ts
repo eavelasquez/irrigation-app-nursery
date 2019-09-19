@@ -16,7 +16,6 @@ export class SocketService {
 
   constructor(private socket: Socket, private http: HttpClient) {
     socket.on('connect', () => {
-      // this.myEmitter.emit('ggggggg');
       console.log('Connected');
 
     });
@@ -27,7 +26,7 @@ export class SocketService {
     });
 
     socket.on('measurement', (data: SystemInfo) => {
-      console.log('data :', data.lineas);
+      
       this.systemInfo = data;
       this.myEmitter.emit(this.systemInfo);
     });
@@ -47,14 +46,37 @@ export class SocketService {
     return this.http.post(url, body, { headers });
   }
 
-  public Loked(id) {
-    const url = environment.URL_SERVICES + '/linea-riego';
+  public Locked(id) {
+    const url = environment.URL_SERVICES + '/linea-riego/lock';
     // Create headers object for send post, token of authentication
     const headers = new HttpHeaders({
       'Authorization': localStorage.getItem('Authorization')
     });
     // Request HTTP POST - Created agend
-    return this.http.put(url, id, { headers });
+    console.log("SI entro");
+    return this.http.put(url, {id}, { headers });
+  }
+
+  public switchOn(id) {
+    const url = environment.URL_SERVICES + '/linea-riego/on';
+    console.log("Entro servicio")
+    // Create headers object for send post, token of authentication
+    const headers = new HttpHeaders({
+      'Authorization': localStorage.getItem('Authorization')
+    });
+    // Request HTTP POST - Created agend
+    return this.http.put(url, {id}, { headers });
+  }
+
+  public switchOff(id) {
+    const url = environment.URL_SERVICES + '/linea-riego/off';
+    console.log("Entro servicio")
+    // Create headers object for send post, token of authentication
+    const headers = new HttpHeaders({
+      'Authorization': localStorage.getItem('Authorization')
+    });
+    // Request HTTP POST - Created agend
+    return this.http.put(url, {id}, { headers });
   }
 
 }

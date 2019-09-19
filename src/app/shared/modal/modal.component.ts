@@ -21,7 +21,12 @@ export class ModalComponent implements OnInit {
 
   program() {
     const time = this.time.value;
-    const body = { line: this.content.line, time };
+    const body = { line: this.content.id, time };
+    this.socketService.programLine(body).subscribe(value => console.log(value));
+  }
+
+  lock() {
+    const body = { line: this.content.line };
     this.socketService.programLine(body).subscribe(value => console.log(value));
   }
 }

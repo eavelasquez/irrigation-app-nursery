@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { UserService } from '../../services/service.index';
 import { AuthUser } from '../../models/user.model';
 
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -14,6 +15,7 @@ export class LoginComponent implements OnInit {
   title = 'Vivero CTGI';
   CC: string;
   validateForm: FormGroup;
+
 
   // Services need injected in the constructor
   constructor(public fb: FormBuilder, public router: Router, public userService: UserService) {

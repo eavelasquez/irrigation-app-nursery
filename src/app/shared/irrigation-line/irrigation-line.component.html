@@ -20,8 +20,16 @@
                     <li class="list-group-item">Humedad promedio.
                         <span class="h4 p-2 badge badge-warning">{{ InfoLinea.humedad / 100 | percent:'1.2' }}</span>
                     </li>
+
+                    <button mdbBtn type="submit" size="sm" color="light-green" (click)="Lock()" mdbWavesEffect>{{ this.locked }}</button>
+
+                    <button mdbBtn type="submit" size="sm" color="dark-green" (click)="Switch()" mdbWavesEffect>
+                                <mdb-icon fas icon=""></mdb-icon>
+                    </button>
+                    
                     <li class="list-group-item">
-                         
+
+                                              
                             <!-- <div class="custom-control custom-switch">
                                     <input type="checkbox" class="custom-control-input" id="customSwitch">
                                     <label class="custom-control-label" for="customSwitch">Bloquear</label>

@@ -1,6 +1,7 @@
-import {Component, OnInit, Input, OnChanges, SimpleChanges} from '@angular/core';
+import { Component, OnInit, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { MDBModalService, MDBModalRef } from 'angular-bootstrap-md';
 import { ModalComponent } from '../modal/modal.component';
+import { SocketService } from '../../services/socket/socket.service';
 
 @Component({
   selector: 'app-irrigation-line',
@@ -12,8 +13,12 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
   estado = '';
   imagen: string;
   color: string;
+  locked: string;
   modalRef: MDBModalRef;
-  constructor(private modalService: MDBModalService) { }
+  constructor(private modalService: MDBModalService, private socketService: SocketService) {
+
+
+  }
 
   modalOptions = {
     backdrop: true,
@@ -31,15 +36,33 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
   };
 
   ngOnInit() {
+
   }
 
   ngOnChanges(changes: SimpleChanges): void {
     this.estado = this.InfoLinea.estado ? 'Encendida' : 'Apagada';
     this.imagen = this.InfoLinea.estado ? 'assets/img/irrigation.png' : 'assets/img/irrigation_1.png';
-    this.color = this.InfoLinea.estado ? "success"   : "danger";}
+    this.color = this.InfoLinea.estado ? "success" : "danger";
+    this.locked = this.InfoLinea.locked ? 'Bloqueada' : 'Desbloqueada';
+  }
 
-    openModal() {
+  openModal() {
+    this.modalOptions.data.content = this.InfoLinea;
     this.modalRef = this.modalService.show(ModalComponent, this.modalOptions);
+  }
+
+  Lock() {
+    this.socketService.Locked(this.InfoLinea.id).subscribe(value => console.log(value));
+  }
+
+  Switch() {
+    if (!this.InfoLinea.estado) {
+      this.socketService.switchOn(this.InfoLinea.id).subscribe(value => console.log(value));
+      console.log("Entro");
+    } else{
+      this.socketService.switchOff(this.InfoLinea.id).subscribe(value => console.log(value));
+    }
+    
   }
 
 }
