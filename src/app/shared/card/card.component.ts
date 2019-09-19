@@ -19,7 +19,7 @@ export class CardComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.percent = this.sanitization.bypassSecurityTrustStyle(`width: ${this.Info.value} %`);
+    this.percent = this.sanitization.bypassSecurityTrustStyle(`width: ${this.Info.value }%`);
   }
 
 }

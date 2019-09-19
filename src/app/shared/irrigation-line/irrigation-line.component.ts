@@ -12,7 +12,6 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
   estado = '';
   imagen: string;
   color: string;
-  img: string;
   modalRef: MDBModalRef;
   constructor(private modalService: MDBModalService) { }
 
@@ -36,17 +35,10 @@ export class IrrigationLineComponent implements OnInit, OnChanges {
 
   ngOnChanges(changes: SimpleChanges): void {
     this.estado = this.InfoLinea.estado ? 'Encendida' : 'Apagada';
+    this.imagen = this.InfoLinea.estado ? 'assets/img/irrigation.png' : 'assets/img/irrigation_1.png';
+    this.color = this.InfoLinea.estado ? "success"   : "danger";}
 
-    if (this.InfoLinea.estado){
-      this.imagen = ".png";  
-      this.color = "success"  
-   } else {
-      this.imagen = "_1.png"
-      this.color = "danger"
-    }    
-  }
-
-  openModal() {
+    openModal() {
     this.modalRef = this.modalService.show(ModalComponent, this.modalOptions);
   }
 
