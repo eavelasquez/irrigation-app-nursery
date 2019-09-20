@@ -3,7 +3,8 @@
     <mdb-card>
         <div class="view rgba-white-slight waves-light" (click)="openModal()" mdbWavesEffect>
             <!-- Card img -->
-            <mdb-card-img src='{{this.imagen}}'  [ngClass]="{'animated': !this.estado}" class="img-fluid infinite" alt="líneas de riego"></mdb-card-img>
+            <mdb-card-img src='{{this.imagen}}' [ngClass]="{'animated': !this.estado}" class="img-fluid infinite"
+                alt="líneas de riego"></mdb-card-img>
             <!-- <mdb-card-img src="assets/img/irrigation.png" [ngClass]="{'animated': !this.estado}" class="img-fluid infinite" alt="líneas de riego"></mdb-card-img> -->
             <a>
                 <div class="mask"></div>
@@ -15,29 +16,25 @@
             <mdb-card-text>
                 <ul class="list-group list-group-flush">
                     <li class="list-group-item">Riego
-                        <span class="badge badge-{{this.color}} p-2 h4" [ngClass]="{'badge-warning': !this.estado}">{{ this.estado }}</span>
+                        <span class="badge badge-{{this.color}} p-2 h4"
+                            [ngClass]="{'badge-warning': !this.estado}">{{ this.estado }}</span>
                     </li>
                     <li class="list-group-item">Humedad promedio.
                         <span class="h4 p-2 badge badge-warning">{{ InfoLinea.humedad / 100 | percent:'1.2' }}</span>
                     </li>
 
-                    <button mdbBtn type="submit" size="sm" color="light-green" (click)="Lock()" mdbWavesEffect>{{ this.locked }}</button>
+                    <button mdbBtn type="submit" size="sm" class="btn btn-{{this.ColorLocked}} btn-sm" (click)="Lock()"
+                        mdbWavesEffect>{{ this.locked }}</button>
 
-                    <button mdbBtn type="submit" size="sm" color="dark-green" (click)="Switch()" mdbWavesEffect>
-                                <mdb-icon fas icon=""></mdb-icon>
-                    </button>
-                    
+                    <button mdbBtn  type="submit" size="sm" (click)="Switch()" class="btn btn-{{this.color}} btn-sm {{this.Visibility}}" mdbWavesEffect>{{ this.estado }}</button>
+
                     <li class="list-group-item">
 
-                                              
-                            <!-- <div class="custom-control custom-switch">
-                                    <input type="checkbox" class="custom-control-input" id="customSwitch">
-                                    <label class="custom-control-label" for="customSwitch">Bloquear</label>
-                            </div> -->
 
-                        <button mdbBtn type="submit" size="sm" color="light-green" (click)="openModal()" mdbWavesEffect>
+
+                        <!-- <button mdbBtn type="submit" size="sm" color="light-green" (click)="openModal()" mdbWavesEffect>
                             <mdb-icon fas icon="eye"></mdb-icon>
-                        </button>
+                        </button> -->
                     </li>
                 </ul>
             </mdb-card-text>

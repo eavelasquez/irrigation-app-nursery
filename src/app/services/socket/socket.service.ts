@@ -53,7 +53,16 @@ export class SocketService {
       'Authorization': localStorage.getItem('Authorization')
     });
     // Request HTTP POST - Created agend
-    console.log("SI entro");
+    return this.http.put(url, {id}, { headers });
+  }
+
+  public Unlocked(id) {
+    const url = environment.URL_SERVICES + '/linea-riego/unlock';
+    // Create headers object for send post, token of authentication
+    const headers = new HttpHeaders({
+      'Authorization': localStorage.getItem('Authorization')
+    });
+    // Request HTTP POST - Created agend
     return this.http.put(url, {id}, { headers });
   }
 
