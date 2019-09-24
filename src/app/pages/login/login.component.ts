@@ -12,9 +12,10 @@ import { AuthUser } from '../../models/user.model';
 })
 export class LoginComponent implements OnInit {
 
-  title = 'Vivero CTGI';
-  CC: string;
-  validateForm: FormGroup;
+  public title = 'Vivero CTGI';
+  public CC: string;
+  public validateForm: FormGroup;
+  public message: string;
 
 
   // Services need injected in the constructor
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
     this.validateForm = fb.group({
       documentFormEx: new FormControl(this.CC, [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]),
       passwordFormEx: new FormControl(null, [Validators.required, Validators.minLength(6), Validators.maxLength(16)]),
-      rememberFormEx: new FormControl(false, [Validators.requiredTrue])
+      rememberFormEx: new FormControl(false)
     });
   }
 
@@ -49,6 +50,7 @@ export class LoginComponent implements OnInit {
       this.validateForm.value.passwordFormEx
     );
     // User service for sending post request with credentials of user
-    this.userService.loginUser(user, this.rememberFormEx.value).subscribe(() => this.router.navigate(['/home']));
+    this.userService.loginUser(user, this.rememberFormEx.value).subscribe(() => this.router.navigate(['/home']),
+    (err) => this.message = err.error.message ? 'Datos incorrectos' : 'Hubo un error al autenticar');
   }
 }

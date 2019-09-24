@@ -69,16 +69,17 @@
                                 <mdb-success *ngIf="passwordFormEx.valid && (passwordFormEx.dirty || passwordFormEx.touched)">
                                 </mdb-success>
                             </div>
+                            <!-- Material input - Password -->
                             <div class="d-flex justify-content-around mt-0 mb-2">
-                                <div>
-                                  <!-- Remember me -->
-                                  <mdb-checkbox formControlName="rememberFormEx">Recuérdame</mdb-checkbox>
-                                </div>
+                                <!-- Remember me -->
+                                <mdb-checkbox formControlName="rememberFormEx">Recuérdame</mdb-checkbox>
                             </div>
                             <button mdbBtn type="submit" color="dark-green" block="true" mdbWavesEffect>iniciar sesión</button>
-                            <!-- Material input - Password -->
-                        </form>
-                    </mdb-card-text>
+                          </form>
+                        </mdb-card-text>
+                        <div *ngIf="message" class="alert alert-danger" role="alert">
+                          <span class="small">{{message}}</span>
+                        </div>
                 </mdb-card-body>
                 <!-- Form reactive - Fields validation with error messages -->
             </mdb-card>
