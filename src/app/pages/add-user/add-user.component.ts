@@ -29,18 +29,18 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   public loading: boolean;
   public firstItemIndex;
   public lastItemIndex;
+  public message: string;
 
   // Services need injected in the constructor
   constructor(public fb: FormBuilder, public userService: UserService,
-              public tableService: MdbTableService, private cdRef: ChangeDetectorRef, public router: Router) {
+    public tableService: MdbTableService, private cdRef: ChangeDetectorRef, public router: Router) {
     this.loading = false;
 
     // Form reactive with her controls - Fields validated
     this.validateForm = fb.group({
-      documentFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]),
+      documentFormEx: new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]),
       nameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z ]+$')]),
       surnameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z ]+$')]),
-      emailFormEx: new FormControl(null, [Validators.minLength(12), Validators.maxLength(36), Validators.email]),
       passwordFormEx: new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(16)]),
       passwordConfirmFormEx: new FormControl(null)
     });
@@ -50,7 +50,6 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   get documentFormEx() { return this.validateForm.get('documentFormEx'); }
   get nameFormEx() { return this.validateForm.get('nameFormEx'); }
   get surnameFormEx() { return this.validateForm.get('surnameFormEx'); }
-  get emailFormEx() { return this.validateForm.get('emailFormEx'); }
   get passwordFormEx() { return this.validateForm.get('passwordFormEx'); }
   get passwordConfirmFormEx() { return this.validateForm.get('passwordConfirmFormEx'); }
 
@@ -84,18 +83,21 @@ export class AddUserComponent implements OnInit, AfterViewInit {
       this.validateForm.value.passwordFormEx
     );
     // User service for sending post request
-    this.userService.postUser(user).subscribe(response => {
+    this.userService.postUser(user).subscribe(() => {
       this.loading = false;
       this.loadUsers();
       this.clearForm();
       // @ts-ignore - Generate alert of create user complete
-      swal({title: 'Registro completo', text: 'Ahora este usuario tiene acceso al vivero.', icon: 'success', buttons: false, timer: 2400});
+      swal({ title: 'Registro completo', text: 'Ahora este usuario tiene acceso al vivero.', icon: 'success', buttons: false, timer: 2400 });
+    }, (err) => {
+      // @ts-ignore - Generate alert of create user failed
+      swal({ title: 'Registro fallido.', text: 'Hubo un error al registrar el usuario.', icon: 'error', buttons: false, timer: 2400 });
     });
   }
 
   // Redirect for update a user using his document
   updateUser(user: User) {
-    this.router.navigate(['/edituser', user.CC]);
+    this.router.navigate(['/edituser', user._id]);
   }
 
   // Event of user delete - This function delete a user using his document, also has confirmation alerts to remove user
@@ -103,7 +105,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
     if (user.CC === this.userService.user.CC) {
       // @ts-ignore - Generate alert of delete invalid, you can not erase yourself
       swal('No se puede eliminar este usuario', 'Inválido borrarse a sí mismo.', 'warning', { buttons: false, timer: 2000 });
-      return ;
+      return;
     }
     // @ts-ignore - Generate alert if confirm delete user
     swal({
@@ -115,7 +117,7 @@ export class AddUserComponent implements OnInit, AfterViewInit {
     }).then(willDelete => {
       if (willDelete) {
         // User service for sending delete request
-        this.userService.deleteUser(user.CC).subscribe(response => {
+        this.userService.deleteUser(user._id).subscribe(response => {
           swal('Usuario eliminado', `El usuario ${user.nombre} ha sido eliminado`, {
             icon: 'success',
             buttons: {
@@ -151,13 +153,16 @@ export class AddUserComponent implements OnInit, AfterViewInit {
   // Load users function
   loadUsers() {
     this.loading = true;
+    this.message = 'Cargando...'
     // User service for sending get request
     this.userService.getUsers().subscribe((data: any) => {
-      this.users = data.result;
+      this.users = data;
       this.tableService.setDataSource(this.users);
       this.users = this.tableService.getDataSource();
       this.previous = this.tableService.getDataSource();
       this.loading = false;
+    }, (err) => {
+      this.message = err.error.message ? 'Datos incorrectos' : 'Hubo un error al cargar los usuarios'
     });
   }
 

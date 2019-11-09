@@ -5,7 +5,7 @@ import { NotPageFoundComponent } from './shared/not-page-found/not-page-found.co
 import { NotLoginGuard } from './services/service.index';
 
 const routes: Routes = [
-  { path: 'login', /* canActivate: [ NotLoginGuard ], */ component: LoginComponent },
+  { path: 'login', canActivate: [ NotLoginGuard ], component: LoginComponent },
   { path: '**', component: NotPageFoundComponent }
 ];
 

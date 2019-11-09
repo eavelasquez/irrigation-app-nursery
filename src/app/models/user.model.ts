@@ -21,6 +21,5 @@ export class UpdateUser {
     public CC: string,
     public nombre: string,
     public apellido: string,
-    public _id?: string
   ) {}
 }

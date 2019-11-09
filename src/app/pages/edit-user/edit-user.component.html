@@ -14,8 +14,8 @@
             <div class="col-md-12">
               <!-- Material input -->
               <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="documentFormEx" type="text" class="form-control" id="inputDocument" placeholder="Documento" [value]="user.CC">
                 <label for="inputDocument">Documento</label>
+                <input mdbInput mdbValidate formControlName="documentFormEx" type="text" class="form-control" id="inputDocument" placeholder="Documento">
                 <mdb-error *ngIf="documentFormEx.invalid && (documentFormEx.dirty || documentFormEx.touched)">Campo inválido
                 </mdb-error>
                 <mdb-success *ngIf="documentFormEx.valid && (documentFormEx.dirty || documentFormEx.touched)">Campo válido
@@ -28,8 +28,8 @@
             <div class="col-md-6">
               <!-- Material input -->
               <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="nameFormEx" type="text" class="form-control" id="inputName" placeholder="Nombre" [value]="user.nombre">
                 <label for="inputName">Nombre</label>
+                <input mdbInput mdbValidate formControlName="nameFormEx" type="text" class="form-control" id="inputName" placeholder="Nombre">
                 <mdb-error *ngIf="nameFormEx.invalid && (nameFormEx.dirty || nameFormEx.touched)">Campo inválido
                 </mdb-error>
                 <mdb-success *ngIf="nameFormEx.valid && (nameFormEx.dirty || nameFormEx.touched)">Campo válido
@@ -42,32 +42,11 @@
             <div class="col-md-6">
               <!-- Material input -->
               <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="surnameFormEx" type="text" class="form-control" id="inputSurname" placeholder="Apellido" [value]="user.apellido">
                 <label for="inputSurname">Apellido</label>
+                <input mdbInput mdbValidate formControlName="surnameFormEx" type="text" class="form-control" id="inputSurname" placeholder="Apellido">
                 <mdb-error *ngIf="surnameFormEx.invalid && (surnameFormEx.dirty || surnameFormEx.touched)">Campo inválido
                 </mdb-error>
                 <mdb-success *ngIf="surnameFormEx.valid && (surnameFormEx.dirty || surnameFormEx.touched)">Campo válido
-                </mdb-success>
-              </div>
-            </div>
-            <!-- Grid column -->
-          </div>
-          <!-- Grid row -->
-
-          <!-- Grid row -->
-          <div class="form-row">
-            <!-- Grid column -->
-            <div class="col-md-12">
-              <!-- Material input -->
-              <div class="md-form form-group">
-                <input mdbInput mdbValidate formControlName="emailFormEx" type="email" class="form-control" id="inputEmail" placeholder="Correo electrónico" aria-describedby="materialRegisterFormEmail">
-                <label for="inputEmail">Correo electrónico</label>
-                <small id="materialRegisterFormEmail" class="form-text text-muted text-center">
-                  Opcional
-                </small>
-                <mdb-error *ngIf="emailFormEx.invalid && (emailFormEx.dirty || emailFormEx.touched)">Campo inválido
-                </mdb-error>
-                <mdb-success *ngIf="emailFormEx.valid && (emailFormEx.dirty || emailFormEx.touched)">Campo válido
                 </mdb-success>
               </div>
             </div>
