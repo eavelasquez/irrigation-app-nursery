@@ -5,7 +5,10 @@
 
 export const environment = {
   production: false,
-  URL_SERVICES: 'http://localhost:3000'
+   URL_SERVICES: 'http://localhost:3000'
+   // URL_SERVICES: 'http://192.168.1.67:3000'
+
+   // URL_SERVICES: 'http://10.101.177.167:3000'
 };
 
 /*
@@ -15,3 +18,4 @@ export const environment = {
  * because it will have performance impact when throw error
  */
 // import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+

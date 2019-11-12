@@ -10,7 +10,7 @@ const pagesRoutes: Routes = [
   {
     path: '',
     component: PagesComponent,
-    // canActivate: [LoginGuard],
+    canActivate: [LoginGuard],
     children: [
       { path: 'home', component: HomeComponent, data: { title: 'Inicio' } },
       { path: 'adduser', component: AddUserComponent, data: { title: 'Agregar usuario' } },
