@@ -13,22 +13,22 @@ import swal from 'sweetalert';
 export class EditUserComponent implements OnInit {
 
   validateForm: FormGroup;
+  id: string;
   user: UpdateUser = new UpdateUser('', '', '');
 
   // Services need injected in the constructor
-  constructor( public fb: FormBuilder, public userService: UserService, public activatedRoute: ActivatedRoute, public router: Router ) {
+  constructor(public fb: FormBuilder, public userService: UserService, public activatedRoute: ActivatedRoute, public router: Router) {
     // Get param of url - Route parameter CC
     this.activatedRoute.params.subscribe(params => {
-      const CC = params['CC'];
-      this.loadUser(CC);
+      this.id = params['CC'];
+      this.loadUser(this.id);
     });
 
     // Form reactive with her controls - Fields validated
     this.validateForm = fb.group({
-      documentFormEx: new FormControl (null, [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern('^[0-9]*$') ] ),
-      nameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z]+$') ] ),
-      surnameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z]+$') ] ),
-      emailFormEx: new FormControl(null, [Validators.minLength(12), Validators.maxLength(36), Validators.email ] )
+      documentFormEx: new FormControl(null, [Validators.required, Validators.minLength(8), Validators.maxLength(10), Validators.pattern('^[0-9]*$')]),
+      nameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z]+$')]),
+      surnameFormEx: new FormControl(null, [Validators.required, Validators.minLength(3), Validators.maxLength(16), Validators.pattern('^[a-zA-Z]+$')]),
     });
   }
 
@@ -36,17 +36,18 @@ export class EditUserComponent implements OnInit {
   get documentFormEx() { return this.validateForm.get('documentFormEx'); }
   get nameFormEx() { return this.validateForm.get('nameFormEx'); }
   get surnameFormEx() { return this.validateForm.get('surnameFormEx'); }
-  get emailFormEx() { return this.validateForm.get('emailFormEx'); }
 
   // A lifecycle hook that is called after Angular has initialized all data-bound properties of a directive
   ngOnInit() {
   }
 
   // Load user function using his document
-  loadUser( CC: string ) {
-    this.userService.getUser(CC).subscribe( response => {
+  loadUser(CC: string) {
+    this.userService.getUser(CC).subscribe((response) => {
       this.user = response;
-      console.log(response);
+      this.documentFormEx.setValue(this.user.CC);
+      this.nameFormEx.setValue(this.user.nombre);
+      this.surnameFormEx.setValue(this.user.apellido);
     });
   }
 
@@ -57,8 +58,7 @@ export class EditUserComponent implements OnInit {
 
   // Event of user update - This function update a user using his document
   updateUser() {
-    console.log(this.validateForm.invalid);
-    if (this.validateForm.value) { return; }
+    if (this.validateForm.invalid) { return; }
     // Create user object  for send update
     const user = new UpdateUser(
       this.validateForm.value.documentFormEx,
@@ -66,11 +66,10 @@ export class EditUserComponent implements OnInit {
       this.validateForm.value.surnameFormEx
     );
     // User service for sending update request
-    this.userService.putUser(user).subscribe(response => {
-      console.log(response);
+    this.userService.putUser(this.id, user).subscribe(() => {
       this.clearForm();
       // @ts-ignore - Generate alert of update user complete
-      swal({title: 'Usuario actualizado', text: `El usuario ${ user.nombre } ha sido actualizado.`, icon: 'success', buttons: false, timer: 2400});
+      swal({ title: 'Usuario actualizado', text: `El usuario ha sido actualizado.`, icon: 'success', buttons: false, timer: 2400 });
       this.cancelUpdate();
     });
   }

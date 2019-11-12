@@ -80,19 +80,19 @@ export class UserService {
     // Request HTTP GET - Show user
     return this.http.get( url, { headers }  ).pipe(map( (response: any) => {
       // Return result user
-      return response.result;
+      return response;
     }));
   }
 
   // Request put, put a user registered
-  putUser(user: UpdateUser) {
-    const url = environment.URL_SERVICES + '/usuario/';
+  putUser(id: string, user: UpdateUser) {
+    const url = environment.URL_SERVICES + '/usuario/' + id;
     // Create headers object for send post, token of authentication
     const headers = new HttpHeaders({
       'Authorization': localStorage.getItem('Authorization')
     });
     // Request HTTP PUT - Update user
-    return this.http.put( url, user, { headers } );
+    return this.http.put(url, user, { headers } ).pipe(map( (response: any) => response));
   }
 
   // Request delete, delete a user registered using identity document
