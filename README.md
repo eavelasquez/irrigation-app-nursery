@@ -1,14 +1,12 @@
-# MdbAngularFree
+# irrigation-app-nursery
+
+This's a client application for an automated irrigation system that allows you to view the status of the tanks, sensors and humidity. It is built with a Free Angular MDB template.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 6.0.0-rc.5.
 
 ## Development server
 
-Run `ng serve mdb-angular-free` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Demo application
-
-Run `ng serve mdb-demo` for a demo application build with MDB Angular Pro components.
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
